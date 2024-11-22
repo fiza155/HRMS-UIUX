@@ -1,13 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.authentication-bg {
+  min-height: 100px;
+  background-color: #f8f9fa;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #051224;
+  color: #e2e1e1;
+}
+
+body.dark-mode .content-wrapper {
+  background-color: #051224;
+}
+
+body.dark-mode .dashboard-layout .main-content .page-content {
+  background-color: #051224;
+}
+
+body.dark-mode .navbar {
+  background-color: #051224;
+}
+
+body.dark-mode .input-group-text {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+body.dark-mode .form-control {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+body.dark-mode .dropdown-toggle {
+  /* background-color: #333; */
+  color: #f0f0f0;
+}
+
+body.dark-mode .card {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+/* Icon Styles */
+.icon {
+  font-size: 1.2rem;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.icon:hover {
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  color: #495057;
+}
+
+body.dark-mode .icon {
+  color: #b0b0b0;
+
+}
+
+body.dark-mode .icon:hover {
+  background-color: #333;
+  color: #fff;
+
 }

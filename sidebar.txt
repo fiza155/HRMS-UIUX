@@ -1,0 +1,25 @@
+1.dashboard - admin
+2. HRs
+	- all hrs
+	- register anhr
+3. employees
+	- all employees
+	- add an empoloyees
+4. jobs posting
+	- post a job
+	- all jobs
+
+5. job application
+	- all job applications
+
+6. performances
+7. compansation	-
+8. attendence
+	
+
+
+
+
+
+
+	
