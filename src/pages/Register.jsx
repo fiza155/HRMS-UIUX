@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -185,7 +185,7 @@ const Register = () => {
                         Remember me
                       </label>
                     </div>
-                    <Link to="/">
+                    <NavLink to="/">
                       <button
                         className="btn w-100 text-white btn-sm"
                         style={{
@@ -196,7 +196,7 @@ const Register = () => {
                       >
                         Sign Up
                       </button>
-                    </Link>
+                    </NavLink>
                   </form>
 
                   <div className="text-center mt-3">

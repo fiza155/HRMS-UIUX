@@ -150,7 +150,7 @@ const Login = () => {
                   </div>
 
                   <div className="d-grid mb-3">
-                    <Link to="/dashboard" className="text-decoration-none">
+                    <NavLink to="/dashboard" className="text-decoration-none">
                       <button
                         type="submit"
                         className="btn w-100 text-white btn-sm"
@@ -158,7 +158,7 @@ const Login = () => {
                       >
                         Sign In
                       </button>
-                    </Link>
+                    </NavLink>
                   </div>
                 </form>
 
@@ -180,7 +180,7 @@ const Login = () => {
                 <div className="text-center mt-4">
                   <p className="mb-0" style={{ fontSize: "0.875rem" }}>
                     Don't have an account?
-                    <Link to="/" className="text-decoration-none">
+                    <Link to="/signup" className="text-decoration-none">
                       <b>Sign Up</b>
                     </Link>
                   </p>

@@ -1,34 +1,24 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashboardLayout from "./components/Layout/DashboardLayout";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import AdminDashboard from "./pages/Dashboard/AdminDashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Register";
-import RegisterHR from "./pages/HR.jsx/RegisterHR";
+import RegisterHR from "./pages/hr/RegisterHR";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Pages without Sidebar & Header */}
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-      </Routes>
-      {/* Pages with Sidebar & Header */}
-      {/* <Route
-          path="/"
-          element={
-            <DashboardLayout>
-              <Dashboard />
-            </DashboardLayout>
-          }
-        /> */}
-      <DashboardLayout>
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
+
+        {/* Pages with DashboardLayout */}
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<AdminDashboard />} />
           <Route path="/hr/registerHR" element={<RegisterHR />} />
-        </Routes>
-      </DashboardLayout>
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }

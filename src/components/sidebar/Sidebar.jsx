@@ -16,8 +16,8 @@ import { faUserTie } from "@fortawesome/free-solid-svg-icons/faUserTie";
 import "./Sidebar.css";
 
 function Sidebar() {
-  const [isExpanded, setIsExpanded] = useState(true); // Controls manual toggle
-  const [isHovered, setIsHovered] = useState(false); // Controls hover expansion
+  const [isExpanded, setIsExpanded] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const sidebarRef = useRef(null);
 

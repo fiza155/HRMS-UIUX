@@ -211,15 +211,6 @@ const RegisterHR = () => {
       
   `}
       </style>
-      <style>
-        {`
-    #emailaddress:focus {
-      outline: none; /* Removes the default blue border */
-      border: 2px solid /* Adds custom border color */
-      box-shadow: 0 0 5px fy /* Adds subtle glow */
-    }
-  `}
-      </style>
     </div>
   );
 };
