@@ -25,7 +25,7 @@ const AddCompensation = () => {
   };
 
   return (
-    <div className="container mt-5 ">
+    <div className="container mt-5 w-75 ">
       <div className="card shadow-lg p-4">
         <h3 className="text-center mb-4">Add Compensation</h3>
         <form>
