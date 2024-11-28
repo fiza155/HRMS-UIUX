@@ -99,11 +99,11 @@ const Login = () => {
                     >
                       Password <span style={{ color: "red" }}>*</span>
                     </label>
-                    <div className="input-group">
+                    <div className="input-group w-100">
                       <input
                         type={passwordVisible ? "text" : "password"}
                         id="password"
-                        className="form-control form-control-sm"
+                        className="form-control form-control-sm "
                         placeholder="Enter your password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -166,7 +166,7 @@ const Login = () => {
                   <p className="text-muted" style={{ fontSize: "0.875rem" }}>
                     or Sign In with
                   </p>
-                  <button className="btn btn-outline-info me-2 btn-sm ">
+                  <button className="btn btn-outline-info me-2  btn-sm ">
                     <i className="fab fa-facebook-f"></i>
                   </button>
                   <button className="btn btn-outline-danger me-2 btn-sm">

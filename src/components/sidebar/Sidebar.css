@@ -6,39 +6,19 @@
     transition: width 0.3s;
     overflow-y: auto;
     transition: width 0.3s ease-in-out;
-
-
 }
 
 .sidebar-collapsed {
     width: 60px;
     padding-top: 20px;
     transition: width 0.3s ease-in-out;
-
 }
-
-/* .sidebar-expanded .sidebar-link span {
-    display: inline;
-}
-
-.sidebar-collapsed .sidebar-link span {
-    display: none;
-} */
-
-
-/* .sidebar-collapsed .sidebar-nav-item span {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 5.3s, visibility 1.3s;
-} */
-
 
 .sidebar-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-
 }
 
 .sidebar-logo img {
@@ -46,12 +26,7 @@
     height: 140px;
     width: 175px;
     margin-left: 20px;
-
-
-
-
 }
-
 
 .sidebar-toggle {
     background: none;
@@ -59,9 +34,7 @@
     color: white;
     font-size: 23px;
     cursor: pointer;
-
 }
-
 
 .sidebar-nav {
     list-style: none;
@@ -93,6 +66,7 @@
     color: white !important;
     display: flex;
 
+
 }
 
 .dropdown-toggle .dropdown-icon {
@@ -105,13 +79,10 @@
 
 }
 
-
 .dropdown-item {
     color: white !important;
     background-color: #693499 !important;
-    padding: 5px !important;
-
-    margin: 0 !important;
+    padding: 7px !important;
 
     text-decoration: none !important;
 
@@ -121,7 +92,6 @@
 .dropdown-item:hover {
     background-color: #7e57c2 !important;
     color: white !important;
-
 }
 
 .sidebar-link {
@@ -143,7 +113,7 @@
 }
 
 .sidebar-nav-item.expanded {
-    margin-bottom: 20px;
+    margin-bottom: 7px;
 
 }
 
@@ -156,25 +126,35 @@
     transition: margin-top 0.3s ease;
 }
 
-/* Transition for dropdown */
+.sidebar-nav-item.expanded .dropdown-menu {
+    position: static;
+    display: block;
+    padding-bottom: 0px !important;
+
+    /* Space below dropdown */
+}
+
+/*  dropdown Transition */
 .sidebar-nav-item .dropdown-menu {
     transition: height 0.3s ease;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 790px) {
     .sidebar {
-        width: 100%;
-
-
+        width: 50%;
+        position: fixed;
+        z-index: 10;
     }
 
     .sidebar-collapsed {
-        width: 60px;
+        width: 50px;
     }
 
     .sidebar-nav-item {
+
         text-align: start;
         padding: 10px;
+        padding-left: 7px;
         /* align-items: center; */
         justify-content: center;
     }

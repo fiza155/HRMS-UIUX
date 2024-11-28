@@ -16,22 +16,35 @@ import { faUserTie } from "@fortawesome/free-solid-svg-icons/faUserTie";
 import "./Sidebar.css";
 
 function Sidebar() {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(window.innerWidth > 790); // Default collapsed on mobile
   const [isHovered, setIsHovered] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const sidebarRef = useRef(null);
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    if (window.innerWidth > 790) setIsHovered(true); // Expand only on larger screens
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
+    if (window.innerWidth > 790) setIsHovered(false); // Collapse only on larger screens
   };
 
   const toggleSidebar = () => {
     setIsExpanded(!isExpanded);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 790) {
+        setIsExpanded(false); // Collapse on mobile
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const navItems = [
     {
@@ -44,10 +57,11 @@ function Sidebar() {
     { key: "employees", label: "Employees", icon: faUsers },
     { key: "jobPosting", label: "Job Posting", icon: faFileUpload },
     { key: "jobApplication", label: "Job Application", icon: faPenToSquare },
-    { key: "performance", label: "Performance", icon: faChartSimple },
     { key: "compensation", label: "Compensation", icon: faChartBar },
+    { key: "performance", label: "Performance", icon: faChartSimple },
     { key: "attendance", label: "Attendance", icon: faCalendarAlt },
   ];
+
   const dropdownOptions = {
     hr: [
       { label: "All HRs", path: "/hr/all" },
@@ -66,6 +80,10 @@ function Sidebar() {
         label: "All Job Applications",
         path: "/jobApplication/allApplications",
       },
+    ],
+    compensation: [
+      { label: "All Compensation", path: "/compensation/allcompensation" },
+      { label: "Add Compensation", path: "/compensation/addcompensation" },
     ],
   };
 
@@ -111,7 +129,6 @@ function Sidebar() {
           <FontAwesomeIcon icon={faBars} />
         </button>
       </div>
-
       <ul className="sidebar-nav">
         {navItems.map((item) => {
           const hasDropdown = dropdownOptions[item.key];
@@ -130,7 +147,7 @@ function Sidebar() {
                   <Dropdown.Toggle
                     variant="link"
                     id={`dropdown-${item.key}`}
-                    className="text-decoration-none px-0"
+                    className="sidebar-link text-decoration-none px-0"
                     onClick={() => toggleDropdown(item.key)}
                   >
                     <FontAwesomeIcon icon={item.icon} />
@@ -138,7 +155,7 @@ function Sidebar() {
                       <span className="px-3">{item.label}</span>
                     )}
                   </Dropdown.Toggle>
-                  <Dropdown.Menu>
+                  <div className="dropdown-menu">
                     {dropdownOptions[item.key].map((option, index) => (
                       <Dropdown.Item
                         as={Link}
@@ -149,7 +166,7 @@ function Sidebar() {
                         {option.label}
                       </Dropdown.Item>
                     ))}
-                  </Dropdown.Menu>
+                  </div>
                 </Dropdown>
               ) : (
                 <Link

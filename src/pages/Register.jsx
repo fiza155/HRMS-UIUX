@@ -144,7 +144,7 @@ const Register = () => {
                       >
                         Password <span className="text-danger">*</span>
                       </label>
-                      <div className="input-group">
+                      <div className="input-group w-100">
                         <input
                           className="form-control form-control-sm"
                           type={passwordVisible ? "text" : "password"}

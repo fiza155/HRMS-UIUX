@@ -102,7 +102,7 @@ const RegisterHR = () => {
                     Full Name
                   </label>
                   <input
-                    className="form-control form-control-sm"
+                    className="form-control shadow"
                     type="text"
                     id="username"
                     value={formData.username}
@@ -123,7 +123,7 @@ const RegisterHR = () => {
                     Email Address
                   </label>
                   <input
-                    className="form-control form-control-sm"
+                    className="form-control shadow"
                     type="email"
                     id="emailaddress"
                     value={formData.emailaddress}
@@ -144,9 +144,9 @@ const RegisterHR = () => {
                   >
                     Password
                   </label>
-                  <div className="input-group">
+                  <div className="input-group w-100 shadow">
                     <input
-                      className="form-control form-control-sm"
+                      className="form-control "
                       type={passwordVisible ? "text" : "password"}
                       id="password"
                       value={formData.password}
@@ -188,29 +188,6 @@ const RegisterHR = () => {
           </div>
         </div>
       </div>
-
-      {/* CSS Animations */}
-      <style>
-        {`
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-    @keyframes slideIn {
-      from {
-        transform: translateY(80px);
-      }
-      to {
-        transform: translateY(0);
-      }
-    }
-      
-  `}
-      </style>
     </div>
   );
 };
