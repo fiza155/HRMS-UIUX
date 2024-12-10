@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+  
 const AddCompensation = () => {
   const [formData, setFormData] = useState({
     employee: "",
