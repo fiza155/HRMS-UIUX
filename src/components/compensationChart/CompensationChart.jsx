@@ -78,14 +78,14 @@ const CompensationChart = () => {
       </div>
 
       {/* Bar Chart */}
-      <ResponsiveContainer width="98%" height={350}>
+      <ResponsiveContainer width="98%" height={290}>
         <BarChart
           data={selectedEmployee.data}
           margin={{
-            top: 10,
-            right: 10,
+            top: 5,
+            right: 5,
             left: 20,
-            bottom: 10,
+            bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
