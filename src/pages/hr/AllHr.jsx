@@ -1,85 +1,55 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import DeleteConfirmationModal from "../../../Components/DelectModel";
 
-const AllHR = () => {
+export default function AllHR() {
   const [allHRS, setAllHRS] = useState([
     {
       id: 1,
-      name: "John Doe",
-      email: "john.doe@example.com",
-      status: "pending",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
+      name: "Alice Johnson",
+      email: "alice@example.com",
       status: "approved",
     },
+    { id: 2, name: "Bob Smith", email: "bob@example.com", status: "pending" },
     {
       id: 3,
-      name: "Jane",
-      email: "jane.smith@example.com",
-      status: "approved",
+      name: "Charlie Brown",
+      email: "charlie@example.com",
+      status: "blocked",
     },
   ]);
-  const [showDeletePage, setShowDeletePage] = useState(false); // Tracks if the delete page is shown
-  const [deleteHRId, setDeleteHRId] = useState(null); // Stores the ID of the HR to delete
+
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [deleteHRId, setDeleteHRId] = useState(null);
 
   const handleUpdateStatus = (id, status) => {
-    setAllHRS((prev) =>
-      prev.map((hr) => (hr.id === id ? { ...hr, status } : hr))
+    setAllHRS((prevHRS) =>
+      prevHRS.map((hr) => (hr.id === id ? { ...hr, status } : hr))
     );
+    toast.success(`HR status updated to ${status}`);
   };
 
   const handleShowDeletePage = (id) => {
     setDeleteHRId(id);
-    setShowDeletePage(true);
+    setIsDeleteModalVisible(true);
   };
 
-  const handleCloseDeletePage = () => {
-    setShowDeletePage(false);
-    setDeleteHRId(null);
-  };
+  // const handleDeleteCancel = () => {
+  //   setIsDeleteModalVisible(false);
+  //   setDeleteHRId(null);
+  // };
 
-  const handleDeleteHR = () => {
-    setAllHRS((prev) => prev.filter((hr) => hr.id !== deleteHRId));
-    setShowDeletePage(false);
-    setDeleteHRId(null);
-  };
-
-  if (showDeletePage) {
-    return (
-      <div className="modal show d-block vh-100" tabIndex="-1">
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
-            <div className="modal-header custom-header">
-              <h5 className="modal-title">Confirm Delete</h5>
-            </div>
-            <div className="modal-body">
-              <p>Are you sure you want to delete this HR?</p>
-            </div>
-            <div className="modal-footer">
-              <button
-                className="btn btn-secondary rounded-3"
-                onClick={handleCloseDeletePage}
-              >
-                No
-              </button>
-              <button
-                className="btn btn-danger rounded-3"
-                onClick={handleDeleteHR}
-              >
-                Yes, Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // const handleDeleteHR = () => {
+  //   if (!deleteHRId) return;
+  //   setAllHRS((prevHRS) => prevHRS.filter((hr) => hr.id !== deleteHRId));
+  //   toast.success("HR deleted successfully");
+  //   setIsDeleteModalVisible(false);
+  // };
 
   return (
     <div className="container mt-4">
-      <div className="card card-body shadow ">
+      <div className="card card-body shadow">
         <h4
           className="card-title mb-3 text-center fw-bold"
           style={{ color: "#49266a" }}
@@ -88,13 +58,11 @@ const AllHR = () => {
         </h4>
 
         {allHRS.length === 0 ? (
-          <div className="alert alert-warning" role="alert">
-            No HR records found.
-          </div>
+          <div className="alert alert-warning">No HR records found.</div>
         ) : (
-          <div className="table-responsive ">
-            <table className="table table-striped table-bordered table-sm">
-              <thead className="">
+          <div className="table-responsive">
+            <table className="table table-striped table-bordered">
+              <thead>
                 <tr>
                   <th>Name</th>
                   <th>Email</th>
@@ -121,21 +89,33 @@ const AllHR = () => {
                       </span>
                     </td>
                     <td>
-                      <button
-                        onClick={() => handleUpdateStatus(hr.id, "approved")}
-                        className="btn btn-success btn-sm me-2 rounded-3"
-                      >
-                        Approve
-                      </button>
-                      <button
-                        onClick={() => handleUpdateStatus(hr.id, "pending")}
-                        className="btn btn-warning btn-sm me-2 rounded-3"
-                      >
-                        Pending
-                      </button>
+                      {hr.status === "pending" && (
+                        <button
+                          onClick={() => handleUpdateStatus(hr.id, "approved")}
+                          className="btn btn-warning btn-sm me-2"
+                        >
+                          Approve
+                        </button>
+                      )}
+                      {hr.status === "approved" && (
+                        <button
+                          onClick={() => handleUpdateStatus(hr.id, "blocked")}
+                          className="btn btn-warning btn-sm me-2"
+                        >
+                          Lock
+                        </button>
+                      )}
+                      {hr.status === "blocked" && (
+                        <button
+                          onClick={() => handleUpdateStatus(hr.id, "approved")}
+                          className="btn btn-warning btn-sm me-2"
+                        >
+                          Unlock
+                        </button>
+                      )}
                       <button
                         onClick={() => handleShowDeletePage(hr.id)}
-                        className="btn btn-danger btn-sm rounded-3"
+                        className="btn btn-danger btn-sm"
                       >
                         Delete
                       </button>
@@ -147,8 +127,14 @@ const AllHR = () => {
           </div>
         )}
       </div>
+
+      {/* <DeleteConfirmationModal
+        isVisible={isDeleteModalVisible}
+        onCancel={handleDeleteCancel}
+        onConfirm={handleDeleteHR}
+      /> */}
+
+      <ToastContainer />
     </div>
   );
-};
-
-export default AllHR;
+}

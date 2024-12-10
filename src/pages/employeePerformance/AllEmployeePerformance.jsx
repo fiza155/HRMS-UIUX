@@ -1,56 +1,72 @@
 import React, { useState } from "react";
 
-const Compensation = () => {
-  const [employees, setEmployees] = useState([
-    { name: "Employee 1", baseSalary: 120, bonus: 120 },
-    { name: "Employee 2", baseSalary: 5000, bonus: 5000 },
-    { name: "Employee 3", baseSalary: 15000, bonus: 1000 },
-    { name: "Employee 4", baseSalary: 2000, bonus: 1000 },
-    { name: "Employee 5", baseSalary: 12, bonus: 12 },
-    { name: "Employee 6", baseSalary: 2300, bonus: 22 },
-    { name: "Employee 7", baseSalary: 2000, bonus: 1000 },
+const AllEmployeePerformance = () => {
+  const [performances, setPerformances] = useState([
+    {
+      name: "Employee 1",
+      reviewDate: "2024-11-01",
+      kpiScore: 85,
+      feedback: "Good",
+    },
+    {
+      name: "Employee 2",
+      reviewDate: "2024-11-15",
+      kpiScore: 90,
+      feedback: "Excellent",
+    },
+    {
+      name: "Employee 3",
+      reviewDate: "2024-11-20",
+      kpiScore: 78,
+      feedback: "Needs Improvement",
+    },
+    {
+      name: "Employee 4",
+      reviewDate: "2024-11-25",
+      kpiScore: 92,
+      feedback: "Outstanding",
+    },
   ]);
 
   const [editIndex, setEditIndex] = useState(null);
-  const [editEmployee, setEditEmployee] = useState({
+  const [editPerformance, setEditPerformance] = useState({
     name: "",
-    baseSalary: 0,
-    bonus: 0,
+    reviewDate: "",
+    kpiScore: 0,
+    feedback: "",
   });
 
   const [showDeletePage, setShowDeletePage] = useState(false);
-  const [deleteIndex, setDeleteIndex] = useState(null); // Tracks the employee index to delete
-
-  const calculateTotalCompensation = (baseSalary, bonus) => {
-    return parseFloat(baseSalary) + parseFloat(bonus);
-  };
+  const [deleteIndex, setDeleteIndex] = useState(null);
 
   const handleEditClick = (index) => {
     setEditIndex(index);
-    setEditEmployee(employees[index]);
+    setEditPerformance(performances[index]);
   };
 
   const handleSaveClick = () => {
-    const updatedEmployees = [...employees];
-    updatedEmployees[editIndex] = editEmployee;
-    setEmployees(updatedEmployees);
+    const updatedPerformances = [...performances];
+    updatedPerformances[editIndex] = editPerformance;
+    setPerformances(updatedPerformances);
     setEditIndex(null);
   };
 
   const handleDeleteClick = (index) => {
-    setDeleteIndex(index); // Set the index for the modal
-    setShowDeletePage(true); // Show the delete modal
+    setDeleteIndex(index);
+    setShowDeletePage(true);
   };
 
-  const handleDeleteHR = () => {
-    const updatedEmployees = employees.filter((_, i) => i !== deleteIndex);
-    setEmployees(updatedEmployees);
-    handleCloseDeletePage(); // Close the modal
+  const handleDeletePerformance = () => {
+    const updatedPerformances = performances.filter(
+      (_, i) => i !== deleteIndex
+    );
+    setPerformances(updatedPerformances);
+    handleCloseDeletePage();
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setEditEmployee({ ...editEmployee, [name]: value });
+    setEditPerformance({ ...editPerformance, [name]: value });
   };
 
   const handleCloseDeletePage = () => {
@@ -60,14 +76,14 @@ const Compensation = () => {
 
   if (showDeletePage) {
     return (
-      <div className="modal show d-block" tabIndex="-1">
+      <div className="modal show d-block vh-100" tabIndex="-1">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header custom-header">
               <h5 className="modal-title">Confirm Delete</h5>
             </div>
             <div className="modal-body">
-              <p>Are you sure you want to delete this employee?</p>
+              <p>Are you sure you want to delete this performance record?</p>
             </div>
             <div className="modal-footer">
               <button
@@ -78,7 +94,7 @@ const Compensation = () => {
               </button>
               <button
                 className="btn btn-danger rounded-3 btn-sm"
-                onClick={handleDeleteHR}
+                onClick={handleDeletePerformance}
               >
                 Yes, Delete
               </button>
@@ -91,35 +107,35 @@ const Compensation = () => {
 
   return (
     <div className="container my-4">
-      {employees.length === 0 ? (
-        <div className="alert alert-warning" role="alert">
-          No Compensation records found.
-        </div>
-      ) : (
-        <div className="card shadow ">
-          <div className="card-body ">
-            <h4
-              className="card-title text-center mb-3 fw-bold text-uppercase"
-              style={{ color: "#49266a" }}
-            >
-              Employee Compensation
-            </h4>
-            <div className="table-responsive">
-              <table className="table table-bordered table-striped align-middle ">
+      <div className="card shadow">
+        <div className="card-body">
+          <h4
+            className="card-title text-center mb-3 fw-bold"
+            style={{ color: "#49266a" }}
+          >
+            Employee Performance
+          </h4>
+          <div className="table-responsive">
+            {performances.length === 0 ? (
+              <div className="alert alert-warning" role="alert">
+                No Performance records found.
+              </div>
+            ) : (
+              <table className="table table-bordered table-striped align-middle">
                 <thead
                   className="text-white"
                   style={{ backgroundColor: "#49266a" }}
                 >
                   <tr>
                     <th>Employee Name</th>
-                    <th>Base Salary</th>
-                    <th>Bonus</th>
-                    <th>Total Compensation</th>
+                    <th>Review Date</th>
+                    <th>KPI Score</th>
+                    <th>Feedback</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {employees.map((employee, index) => (
+                  {performances.map((performance, index) => (
                     <tr key={index}>
                       {editIndex === index ? (
                         <>
@@ -127,7 +143,16 @@ const Compensation = () => {
                             <input
                               type="text"
                               name="name"
-                              value={editEmployee.name}
+                              value={editPerformance.name}
+                              onChange={handleInputChange}
+                              className="form-control form-control-sm"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="date"
+                              name="reviewDate"
+                              value={editPerformance.reviewDate}
                               onChange={handleInputChange}
                               className="form-control form-control-sm"
                             />
@@ -135,26 +160,20 @@ const Compensation = () => {
                           <td>
                             <input
                               type="number"
-                              name="baseSalary"
-                              value={editEmployee.baseSalary}
+                              name="kpiScore"
+                              value={editPerformance.kpiScore}
                               onChange={handleInputChange}
                               className="form-control form-control-sm"
                             />
                           </td>
                           <td>
                             <input
-                              type="number"
-                              name="bonus"
-                              value={editEmployee.bonus}
+                              type="text"
+                              name="feedback"
+                              value={editPerformance.feedback}
                               onChange={handleInputChange}
                               className="form-control form-control-sm"
                             />
-                          </td>
-                          <td>
-                            {calculateTotalCompensation(
-                              editEmployee.baseSalary,
-                              editEmployee.bonus
-                            ).toFixed(2)}
                           </td>
                           <td>
                             <div className="d-flex">
@@ -175,15 +194,10 @@ const Compensation = () => {
                         </>
                       ) : (
                         <>
-                          <td>{employee.name}</td>
-                          <td>{parseFloat(employee.baseSalary).toFixed(2)}</td>
-                          <td>{parseFloat(employee.bonus).toFixed(2)}</td>
-                          <td>
-                            {calculateTotalCompensation(
-                              parseFloat(employee.baseSalary),
-                              parseFloat(employee.bonus)
-                            ).toFixed(2)}
-                          </td>
+                          <td>{performance.name}</td>
+                          <td>{performance.reviewDate}</td>
+                          <td>{performance.kpiScore}</td>
+                          <td>{performance.feedback}</td>
                           <td>
                             <div className="d-flex">
                               <button
@@ -207,12 +221,12 @@ const Compensation = () => {
                   ))}
                 </tbody>
               </table>
-            </div>
+            )}
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
-export default Compensation;
+export default AllEmployeePerformance;

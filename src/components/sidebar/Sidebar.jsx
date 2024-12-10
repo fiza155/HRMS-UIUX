@@ -9,11 +9,14 @@ import {
   faCalendarAlt,
   faUsers,
   faChartSimple,
-  faPenToSquare,
   faFileUpload,
+  faHistory,
+  faMagnifyingGlassChart,
 } from "@fortawesome/free-solid-svg-icons";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons/faUserTie";
 import "./Sidebar.css";
+import { faBuilding } from "@fortawesome/free-solid-svg-icons/faBuilding";
+import { faChair } from "@fortawesome/free-solid-svg-icons/faChair";
 
 function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(window.innerWidth > 790); // Default collapsed on mobile
@@ -51,39 +54,78 @@ function Sidebar() {
       key: "dashboard",
       label: "Dashboard",
       icon: faDashboard,
-      path: "/dashboard",
+      path: "/admin-dashboard",
     },
     { key: "hr", label: "HR", icon: faUserTie },
-    { key: "employees", label: "Employees", icon: faUsers },
-    { key: "jobPosting", label: "Job Posting", icon: faFileUpload },
-    { key: "jobApplication", label: "Job Application", icon: faPenToSquare },
-    { key: "compensation", label: "Compensation", icon: faChartBar },
-    { key: "performance", label: "Performance", icon: faChartSimple },
     { key: "attendance", label: "Attendance", icon: faCalendarAlt },
+    { key: "compensation", label: "Compensation", icon: faChartBar },
+
+    {
+      key: "departments",
+      label: "All Departments",
+      icon: faBuilding,
+      path: "/admin/all-departments",
+    },
+    { key: "employs", label: "Employs", icon: faUsers },
+    {
+      key: "employsposition",
+      label: "Employs Position",
+      icon: faChair,
+    },
+    {
+      key: "employsperformance",
+      label: "Employs Performance",
+      icon: faChartSimple,
+    },
+
+    {
+      label: "All Job Applications",
+      icon: faMagnifyingGlassChart,
+      path: "/all/applications",
+    },
+    { key: "jobPosting", label: "Job Posting", icon: faFileUpload },
+
+    { key: "jobhistory", label: "Job History", icon: faHistory },
   ];
 
   const dropdownOptions = {
     hr: [
-      { label: "All HRs", path: "/hr/all" },
-      { label: "Register HR", path: "/hr/registerHR" },
+      { label: "All HRs", path: "/admin/all-hr" },
+      { label: "Register HR", path: "/admin/hr-register" },
     ],
-    employees: [
-      { label: "All Employees", path: "/employees/all" },
-      { label: "Add an Employee", path: "/employees/addEmployee" },
+    employs: [
+      { label: "All Employees", path: "/employees" },
+      { label: "Add an Employee", path: "/register/employee" },
+    ],
+    employsposition: [
+      { label: "All Positions", path: "/positions" },
+      { label: "Add Position", path: "/assign/position" },
+      { label: "Position Details", path: "/position-details" },
     ],
     jobPosting: [
-      { label: "Post a Job", path: "/jobPosting/post" },
-      { label: "All Jobs", path: "/jobPosting/allJobs" },
-    ],
-    jobApplication: [
-      {
-        label: "All Job Applications",
-        path: "/jobApplication/allApplications",
-      },
+      { label: "All Jobs", path: "/jobs" },
+      { label: "Post a Job", path: "/post/job" },
     ],
     compensation: [
-      { label: "All Compensation", path: "/compensation/allcompensation" },
-      { label: "Add Compensation", path: "/compensation/addcompensation" },
+      { label: "All Compensation", path: "/admin/all-compensation" },
+      { label: "Add Compensation", path: "/admin/add-compensation" },
+    ],
+    // department: [
+    //   { label: "All Departments", path: "/admin/all-departments" },
+    //   { label: "Add Department", path: "/admin/departments" },
+    // ],
+    jobhistory: [
+      { label: "View Job History", path: "/admin/all-job-history" },
+      { label: "Add Job History", path: "/admin/add-job-history" },
+    ],
+
+    employsperformance: [
+      { label: "All Performance", path: "/admin/performance" },
+      { label: "Add Performance", path: "/admin/add-performance" },
+    ],
+    attendance: [
+      { label: "Attendence", path: "/attendance" },
+      { label: "Attendence Form", path: "/post/attendance" },
     ],
   };
 
@@ -117,7 +159,7 @@ function Sidebar() {
     >
       <div className="sidebar-header">
         {isSidebarOpen && (
-          <NavLink to="/" className="sidebar-logo">
+          <NavLink to="/admin-dashboard" className="sidebar-logo">
             <img
               src="/assets/HRMS logo/Dark_logo.png"
               alt="Logo"
@@ -147,7 +189,7 @@ function Sidebar() {
                   <Dropdown.Toggle
                     variant="link"
                     id={`dropdown-${item.key}`}
-                    className="sidebar-link text-decoration-none px-0"
+                    className="sidebar-link text-decoration-none px-0 "
                     onClick={() => toggleDropdown(item.key)}
                   >
                     <FontAwesomeIcon icon={item.icon} />
@@ -156,11 +198,11 @@ function Sidebar() {
                     )}
                   </Dropdown.Toggle>
                   <div className="dropdown-menu">
-                    {dropdownOptions[item.key].map((option, index) => (
+                    {dropdownOptions[item.key].map((option) => (
                       <Dropdown.Item
                         as={Link}
                         to={option.path}
-                        key={index}
+                        key={`${item.key}-${option.label}`} // Unique key here
                         onClick={() => setActiveDropdown(null)}
                       >
                         {option.label}
@@ -170,7 +212,7 @@ function Sidebar() {
                 </Dropdown>
               ) : (
                 <Link
-                  to={`/${item.key}`}
+                  to={item.path || `/${item.key}`} // Use `item.path` first if defined
                   className="sidebar-link text-decoration-none"
                 >
                   <FontAwesomeIcon icon={item.icon} />

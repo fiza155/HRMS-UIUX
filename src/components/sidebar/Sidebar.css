@@ -1,6 +1,7 @@
 .sidebar {
     background-color: #49266a;
     color: #ffffff !important;
+    font-size: 14.7px;
     height: 100vh;
     width: 250px;
     transition: width 0.3s;
@@ -12,28 +13,37 @@
     width: 60px;
     padding-top: 20px;
     transition: width 0.3s ease-in-out;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-collapsed .dropdown-icon {
+    display: none;
 }
 
 .sidebar-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 0;
+
 }
 
 .sidebar-logo img {
-
     height: 140px;
     width: 175px;
     margin-left: 20px;
+
 }
 
 .sidebar-toggle {
     background: none;
     border: none;
     color: white;
-    font-size: 23px;
+    font-size: 22px;
     cursor: pointer;
+    /* margin: 3px; */
+
 }
 
 .sidebar-nav {
@@ -45,14 +55,12 @@
 
 .sidebar-nav-item {
     background-color: #49266a;
-
-    color: #ffffff !important;
-    padding: 10px;
+    color: #fffdfd !important;
+    padding: 10px 0;
     display: flex;
     flex-direction: column;
     cursor: pointer;
     position: relative;
-
 
 }
 
@@ -63,29 +71,34 @@
 
 
 .dropdown-toggle {
-    color: white !important;
+    color: #f3f7f6 !important;
     display: flex;
-
+    font-size: 14.7px !important;
+    padding: 0 !important;
 
 }
 
 .dropdown-toggle .dropdown-icon {
-    margin-left: auto;
+    margin: 0 !important;
+    padding: 0% !important;
+
+
 }
 
 .dropdown-menu {
     padding: 0 !important;
     margin-left: 0px !important;
 
+
+
 }
 
 .dropdown-item {
-    color: white !important;
+    font-size: 14.7px;
+    color: #ffffff !important;
     background-color: #693499 !important;
     padding: 7px !important;
-
     text-decoration: none !important;
-
 }
 
 
@@ -94,13 +107,12 @@
     color: white !important;
 }
 
-.sidebar-link {
+/* .sidebar-link {
     display: flex;
-
     color: #ffffff;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
-}
+} */
 
 
 .sidebar-nav-item.active {
@@ -139,8 +151,13 @@
     transition: height 0.3s ease;
 }
 
+.sidebar-collapsed .dropdown-icon {
+    display: none;
+}
+
 @media screen and (max-width: 790px) {
     .sidebar {
+
         width: 50%;
         position: fixed;
         z-index: 10;
@@ -153,13 +170,18 @@
     .sidebar-nav-item {
 
         text-align: start;
-        padding: 10px;
-        padding-left: 7px;
+        /* padding: 10px; */
+        /* padding-left: 7px; */
         /* align-items: center; */
         justify-content: center;
     }
 
     .sidebar-nav-item .nav-item-content {
         justify-content: center;
+    }
+
+    .sidebar-toggle {
+        /* padding-left: 2px; */
+        align-items: center;
     }
 }

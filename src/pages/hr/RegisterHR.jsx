@@ -50,21 +50,21 @@ const RegisterHR = () => {
   };
 
   return (
-    <div className="container my-4">
-      <div className="row justify-content-center">
-        <div className="col-lg-6 col-md-6 col-sm-8">
-          <div className="card shadow border">
-            <div className="card-body px-4 py-5 shadow">
+    <div className="container my-5">
+      <div className="d-flex row justify-content-center ">
+        <div className="col-lg-8 col-md-6 col-sm-8 mt-2 ">
+          <div className="card shadow border ">
+            <div className="card-body py-5 shadow">
               <h3
-                className="text-center text-uppercase mb-4 underline "
-                style={{ color: "#49266a", textDecoration: "underline" }}
+                className="text-center text-uppercase fw-bold "
+                style={{ color: "#49266a" }}
               >
                 Register HR
               </h3>
 
               {successMessage && (
                 <div
-                  className="alert alert-light shadow-lg "
+                  className="alert alert-light  "
                   role="alert"
                   style={{
                     position: "fixed",
@@ -92,7 +92,7 @@ const RegisterHR = () => {
                 </div>
               )}
 
-              <form className="mt-5" onSubmit={handleSubmit}>
+              <form className="mt-4" onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label
                     htmlFor="username"
@@ -102,7 +102,7 @@ const RegisterHR = () => {
                     Full Name
                   </label>
                   <input
-                    className="form-control shadow"
+                    className="form-control "
                     type="text"
                     id="username"
                     value={formData.username}
@@ -123,7 +123,7 @@ const RegisterHR = () => {
                     Email Address
                   </label>
                   <input
-                    className="form-control shadow"
+                    className="form-control "
                     type="email"
                     id="emailaddress"
                     value={formData.emailaddress}
@@ -144,7 +144,7 @@ const RegisterHR = () => {
                   >
                     Password
                   </label>
-                  <div className="input-group w-100 shadow">
+                  <div className="input-group w-100 ">
                     <input
                       className="form-control "
                       type={passwordVisible ? "text" : "password"}

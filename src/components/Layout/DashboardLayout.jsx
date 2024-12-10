@@ -3,7 +3,7 @@ import Sidebar from "../sidebar/Sidebar";
 import Header from "../header/Header";
 import "./DashboardLayout.css";
 import { Outlet } from "react-router-dom";
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = () => {
   return (
     <div className="dashboard-layout">
       <Sidebar />
@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }) => {
         <Header />
 
         {/* Dynamic Page Content */}
-        <div className="page-content">
+        <div className=" page-content ">
           <Outlet />
         </div>
       </div>

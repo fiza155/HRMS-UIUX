@@ -6,6 +6,7 @@ const AddCompensation = () => {
     baseSalary: "",
     bonus: "",
   });
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Handler to clear the form
   const handleClear = () => {
@@ -24,11 +25,33 @@ const AddCompensation = () => {
     });
   };
 
+  // Handler for form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Compensation Data:", formData);
+
+    // Display success message
+    setSuccessMessage("Compensation added successfully!");
+
+    // Clear the form
+    handleClear();
+
+    // Remove the success message after 3 seconds
+    setTimeout(() => {
+      setSuccessMessage("");
+    }, 6000);
+  };
+
   return (
-    <div className="container mt-5 w-75 ">
-      <div className="card shadow-lg p-4">
-        <h3 className="text-center mb-4">Add Compensation</h3>
-        <form>
+    <div className="d-flex container mt-5 justify-content-center align-items-center">
+      <div className="col-lg-10 col-md-10 col-sm-8 card shadow-lg p-4 pb-5">
+        <h3
+          className="text-center text-uppercase fw-bold "
+          style={{ color: "#49266a" }}
+        >
+          Add Compensation
+        </h3>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="employeeSelect" className="form-label">
               Select Employee
@@ -99,6 +122,24 @@ const AddCompensation = () => {
           </div>
         </form>
       </div>
+
+      {/* Success Message Popup */}
+      {successMessage && (
+        <div
+          className="alert alert-light"
+          role="alert"
+          style={{
+            position: "fixed",
+            top: "100px",
+            right: "10px",
+            zIndex: 1050,
+            padding: "10px 40px 10px 10px",
+            animation: "fadeIn 0.5s ease, slideIn 0.5s ease",
+          }}
+        >
+          {successMessage}
+        </div>
+      )}
     </div>
   );
 };

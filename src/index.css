@@ -33,7 +33,7 @@ body {
 }
 
 /* Compensation Chart */
-.dashboard-chart-container {
+/* .dashboard-chart-container {
   max-width: 70%;
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@ body {
   background-color: #e3c7f9;
   border: 1px solid #e5d9d9;
   border-radius: 5px;
-}
+} */
 
 
 

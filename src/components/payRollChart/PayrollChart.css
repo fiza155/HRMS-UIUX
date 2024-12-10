@@ -1,0 +1,13 @@
+.Payroll-container {
+    flex: 2;
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0e0f5;
+    /* padding: 5px; */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+}

@@ -150,7 +150,10 @@ const Login = () => {
                   </div>
 
                   <div className="d-grid mb-3">
-                    <NavLink to="/dashboard" className="text-decoration-none">
+                    <NavLink
+                      to="/admin-dashboard"
+                      className="text-decoration-none"
+                    >
                       <button
                         type="submit"
                         className="btn w-100 text-white btn-sm"

@@ -12,13 +12,14 @@
 5. job application
 	- all job applications
 
-6. performances
+6. Employee Peroformance
 7. compansation	
 	all Compensation
 	add compensation
 8. Attendence
-9. Employee Peroformance
-	
+9. Department
+Job History
+Employee Position
 
 
 
