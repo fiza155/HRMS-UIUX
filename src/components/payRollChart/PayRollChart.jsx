@@ -47,7 +47,7 @@ class PayRollChart extends Component {
           options={this.state.options}
           series={this.state.series}
           type="donut"
-          width="450"
+          width="370"
           height={350}
         />
       </div>

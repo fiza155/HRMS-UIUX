@@ -3,6 +3,7 @@ import CompensationChart from "../../components/compensationChart/CompensationCh
 import PayRollChart from "../../components/payRollChart/PayRollChart";
 import "../../components/Layout/DashboardLayout.css";
 import Cards from "../../components/Containers/Cards";
+import EmpPerformanceChart from "../../components/employePerformance/EmpPerformanceChart";
 
 const AdminDashboard = () => {
   return (
@@ -12,6 +13,7 @@ const AdminDashboard = () => {
         <CompensationChart />
         <PayRollChart />
       </div>
+      <EmpPerformanceChart />
     </>
   );
 };

@@ -78,7 +78,7 @@ const CompensationChart = () => {
       </div>
 
       {/* Bar Chart */}
-      <ResponsiveContainer width="98%" height={290}>
+      <ResponsiveContainer width="98%" height={300}>
         <BarChart
           data={selectedEmployee.data}
           margin={{

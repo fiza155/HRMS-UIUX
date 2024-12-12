@@ -32,18 +32,19 @@ body {
   }
 }
 
-/* Compensation Chart */
-/* .dashboard-chart-container {
-  max-width: 70%;
+/* Dashboard Chart Containers */
+.chart-container {
+  flex: 1;
+  max-width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #f0e0f5;
-  padding: 5px;
+
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  margin: 20px;
+  margin: 10px
 }
 
 .chart-title {
@@ -53,21 +54,6 @@ body {
   margin-bottom: 10px;
   text-align: center;
 }
-
-.employee-selector {
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.employee-selector select {
-  padding: 5px;
-  background-color: #e3c7f9;
-  border: 1px solid #e5d9d9;
-  border-radius: 5px;
-} */
-
 
 
 /* Dark Mode Styles */
