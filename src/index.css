@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
+  margin: 0;
   font-family: 'Montserrat', sans-serif !important;
 }
 
@@ -33,7 +34,7 @@ body {
 }
 
 /* Dashboard Chart Containers */
-.chart-container {
+/* .chart-container {
   flex: 1;
   max-width: 40%;
   display: flex;
@@ -45,9 +46,8 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   margin: 10px
-}
-
-.chart-title {
+} 
+  .chart-title {
   font-size: 1.5rem;
   font-weight: 600;
   color: #333;
