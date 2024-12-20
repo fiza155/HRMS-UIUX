@@ -8,14 +8,11 @@ import reportWebVitals from "./reportWebVitals";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { DarkModeProvider } from "./DarkModeContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
-      <DarkModeProvider>
-        <App />
-      </DarkModeProvider>
+      <App />
     </React.StrictMode>
   </BrowserRouter>
 );
