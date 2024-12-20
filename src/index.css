@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900&display=swap');
 
 body {
+  background-color: #ffffff;
+  color: #000000;
   margin: 0;
   font-family: 'Montserrat', sans-serif !important;
 }
@@ -33,90 +35,67 @@ body {
   }
 }
 
-/* Dashboard Chart Containers */
-/* .chart-container {
-  flex: 1;
-  max-width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #f0e0f5;
-
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  margin: 10px
-} 
-  .chart-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 10px;
-  text-align: center;
+/* Dark Mode */
+body[data-bs-theme="dark"] {
+  background-color: #121212;
+  color: white;
 }
 
-
-/* Dark Mode Styles */
-body.dark-mode {
-  background-color: #051224;
-  color: #e2e1e1;
+body[data-bs-theme="dark"] .content-wrapper,
+body[data-bs-theme="dark"] .page-content,
+[data-bs-theme="dark"] .dashboard-layout .main-content,
+[data-bs-theme="dark"] .dashboard-layout .main-content .page-content,
+[data-bs-theme="dark"] .card-container,
+body[data-bs-theme="dark"] .Payroll-container,
+body[data-bs-theme="dark"] .chart-container,
+body[data-bs-theme="dark"] .dashboard-chart-container,
+[data-bs-theme="dark"] .row.gy-2>.col>.card-container,
+body[data-bs-theme="dark"] .performance-chart,
+body[data-bs-theme="dark"] .attendence-chart-wrapper {
+  background-color: #2a2a2a;
+  border: 1px solid #444444;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
 }
 
-body.dark-mode .content-wrapper {
-  background-color: #051224;
+[data-bs-theme="dark"] .row.gy-2>.col>.card-container:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-body.dark-mode .dashboard-layout .main-content .page-content {
-  background-color: #051224;
+body[data-bs-theme="dark"] .navbar,
+body[data-bs-theme="dark"] .input-group input {
+  background-color: #495057;
+  color: #f8f9fa;
+  border: 1px solid #495057;
 }
 
-body.dark-mode .navbar {
-  background-color: #051224;
+body[data-bs-theme="dark"] .icon,
+body[data-bs-theme="dark"] .dropdown-font,
+body[data-bs-theme="dark"] .user-details,
+[data-bs-theme="dark"] .dashboard-card p,
+[data-bs-theme="dark"] .card-description,
+[data-bs-theme="dark"] .job-description,
+[data-bs-theme="dark"] .doughnut-overlay p {
+  color: #adb5bd;
 }
 
-body.dark-mode .input-group-text {
-  background-color: #333;
-  color: #f0f0f0;
+[data-bs-theme="dark"] .dashboard-card h3,
+[data-bs-theme="dark"] .card-title,
+body[data-bs-theme="dark"] .chart-title,
+[data-bs-theme="dark"] .doughnut-overlay {
+  color: #e0e0e0;
 }
 
-body.dark-mode .form-control {
-  background-color: #333;
-  color: #f0f0f0;
+[data-bs-theme="dark"] .card-value,
+[data-bs-theme="dark"] .doughnut-overlay h3 {
+  color: #8e44ad;
 }
 
-body.dark-mode .dropdown-toggle {
-  /* background-color: #333; */
-  color: #f0f0f0;
-}
-
-body.dark-mode .card {
-  background-color: #333;
-  color: #f0f0f0;
-}
-
-/* Icon Styles */
-.icon {
-  font-size: 1.2rem;
-  color: #6c757d;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 8px;
-  border-radius: 50%;
-}
-
-.icon:hover {
-  background-color: #f1f1f1;
-  border-radius: 50%;
-  color: #495057;
-}
-
-body.dark-mode .icon {
-  color: #b0b0b0;
-
-}
-
-body.dark-mode .icon:hover {
-  background-color: #333;
+body[data-bs-theme="dark"] .employee-selector select {
+  background-color: #555;
   color: #fff;
+  border: 1px solid #444;
+}
 
+body[data-bs-theme="dark"] .employee-selector select:focus {
+  border-color: #777;
 }

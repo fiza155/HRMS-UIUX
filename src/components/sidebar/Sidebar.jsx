@@ -59,7 +59,6 @@ function Sidebar() {
     { key: "hr", label: "HR", icon: faUserTie },
     { key: "attendance", label: "Attendance", icon: faCalendarAlt },
     { key: "compensation", label: "Compensation", icon: faChartBar },
-
     {
       key: "departments",
       label: "All Departments",
@@ -77,14 +76,12 @@ function Sidebar() {
       label: "Employs Performance",
       icon: faChartSimple,
     },
-
     {
       label: "All Job Applications",
       icon: faMagnifyingGlassChart,
       path: "/all/applications",
     },
     { key: "jobPosting", label: "Job Posting", icon: faFileUpload },
-
     { key: "jobhistory", label: "Job History", icon: faHistory },
   ];
 
@@ -110,15 +107,10 @@ function Sidebar() {
       { label: "All Compensation", path: "/admin/all-compensation" },
       { label: "Add Compensation", path: "/admin/add-compensation" },
     ],
-    // department: [
-    //   { label: "All Departments", path: "/admin/all-departments" },
-    //   { label: "Add Department", path: "/admin/departments" },
-    // ],
     jobhistory: [
       { label: "View Job History", path: "/admin/all-job-history" },
       { label: "Add Job History", path: "/admin/add-job-history" },
     ],
-
     employsperformance: [
       { label: "All Performance", path: "/admin/performance" },
       { label: "Add Performance", path: "/admin/add-performance" },
@@ -151,13 +143,13 @@ function Sidebar() {
   return (
     <div
       ref={sidebarRef}
-      className={`sidebar ${
+      className={`sidebar rounded-end-5  ${
         isSidebarOpen ? "sidebar-expanded" : "sidebar-collapsed"
       }`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="sidebar-header">
+      <div className="sidebar-header ">
         {isSidebarOpen && (
           <NavLink to="/admin-dashboard" className="sidebar-logo">
             <img
@@ -189,7 +181,7 @@ function Sidebar() {
                   <Dropdown.Toggle
                     variant="link"
                     id={`dropdown-${item.key}`}
-                    className="sidebar-link text-decoration-none px-0 "
+                    className="sidebar-link text-decoration-none px-0"
                     onClick={() => toggleDropdown(item.key)}
                   >
                     <FontAwesomeIcon icon={item.icon} />
@@ -202,7 +194,7 @@ function Sidebar() {
                       <Dropdown.Item
                         as={Link}
                         to={option.path}
-                        key={`${item.key}-${option.label}`} // Unique key here
+                        key={`${item.key}-${option.label}`}
                         onClick={() => setActiveDropdown(null)}
                       >
                         {option.label}
@@ -212,7 +204,7 @@ function Sidebar() {
                 </Dropdown>
               ) : (
                 <Link
-                  to={item.path || `/${item.key}`} // Use `item.path` first if defined
+                  to={item.path || `/${item.key}`}
                   className="sidebar-link text-decoration-none"
                 >
                   <FontAwesomeIcon icon={item.icon} />

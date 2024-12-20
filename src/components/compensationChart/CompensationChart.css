@@ -34,3 +34,19 @@
     border: 1px solid #e5d9d9;
     border-radius: 5px;
 }
+
+@media (max-width: 768px) {
+    .dashboard-chart-container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .chart-title {
+        font-size: 1.2rem;
+    }
+
+    .employee-selector {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

@@ -8,6 +8,7 @@ import {
   YAxis,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 const data = [
@@ -19,35 +20,35 @@ const data = [
 
 const EmpPerformanceChart = () => {
   return (
-    <div className="chart-container">
+    <div className="performance-chart">
       <h3 className="chart-title">Performance Review</h3>
-      <p>
+      <p className="text-center">
         You have to pay <b style={{ color: "#00c853" }}>12548 USD</b>
       </p>
-      <LineChart width={400} height={200} data={data}>
-        {/* KPI Line */}
-        <Line
-          type="monotone"
-          dataKey="KPI"
-          stroke="#00c853"
-          strokeWidth={3}
-          name="KPI Score"
-        />
-        {/* Target Line */}
-        <Line
-          type="monotone"
-          dataKey="target"
-          stroke="#a431ec"
-          strokeWidth={2}
-          name="Target"
-          strokeDasharray="5 5" // Dashed line for distinction
-        />
-        <CartesianGrid stroke="#0000001d" />
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-      </LineChart>
+      <ResponsiveContainer height={250}>
+        <LineChart data={data}>
+          <Line
+            type="monotone"
+            dataKey="KPI"
+            stroke="#00c853"
+            strokeWidth={3}
+            name="KPI Score"
+          />
+          <Line
+            type="monotone"
+            dataKey="target"
+            stroke="#a431ec"
+            strokeWidth={2}
+            name="Target"
+            strokeDasharray="5 5"
+          />
+          <CartesianGrid stroke="#0000001d" />
+          <XAxis dataKey="date" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };

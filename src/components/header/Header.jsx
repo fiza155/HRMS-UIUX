@@ -10,20 +10,12 @@ import {
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
+import { FaMoon, FaSun } from "react-icons/fa"; // Icons for light/dark mode
+import { Button } from "react-bootstrap";
 
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(false);
-  const [showSearchBox, setShowSearchBox] = useState(false); // toggle search box visibility
+  const [showSearchBox, setShowSearchBox] = useState(false); // Toggle search box visibility
   const navigate = useNavigate();
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    if (!darkMode) {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
-  };
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -45,10 +37,20 @@ const Header = () => {
     setShowSearchBox(!showSearchBox);
   };
 
+  // Toggle dark mode on body
+  const toggleDarkMode = () => {
+    const currentTheme = document.body.getAttribute("data-bs-theme");
+    if (currentTheme === "dark") {
+      document.body.setAttribute("data-bs-theme", "light");
+    } else {
+      document.body.setAttribute("data-bs-theme", "dark");
+    }
+  };
+
   return (
     <div className="content-wrapper">
       <Navbar expand="lg" className="px-3 border-bottom">
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center w-100">
           {/* Search Bar */}
           <Form className="d-flex flex-grow-1 me-lg-4">
             <div
@@ -56,7 +58,7 @@ const Header = () => {
               style={{ height: "2rem" }}
             >
               <span
-                className="input-group-text bg-light border-0"
+                className="input-group-text  border-0"
                 onClick={handleSearchToggle}
               >
                 <i
@@ -68,7 +70,7 @@ const Header = () => {
               <FormControl
                 type="search"
                 placeholder="Search..."
-                className="form-control bg-light border-0"
+                className="border-0 form-control-sm formControl"
               />
             </div>
           </Form>
@@ -80,19 +82,20 @@ const Header = () => {
             <i className="bi bi-fullscreen icon" onClick={toggleFullScreen}></i>
           </Nav.Item>
           <Nav.Item className="me-3">
-            <i
-              className={`bi bi-moon icon ${
-                darkMode ? "text-white" : "text-muted"
-              }`}
-              onClick={toggleDarkMode}
-            ></i>
+            <Button variant="link" onClick={toggleDarkMode}>
+              {document.body.getAttribute("data-bs-theme") === "dark" ? (
+                <FaSun />
+              ) : (
+                <FaMoon />
+              )}
+            </Button>
           </Nav.Item>
         </Nav>
 
         <Dropdown align="end">
           <Dropdown.Toggle
-            variant="light"
-            className="d-flex align-items-center border-0 bg-light "
+            variant=""
+            className="d-flex align-items-center border-0 "
           >
             <img
               src="https://via.placeholder.com/40"
