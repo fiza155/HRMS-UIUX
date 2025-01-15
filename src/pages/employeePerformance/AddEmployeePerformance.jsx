@@ -68,7 +68,7 @@ export default function AddEmployeePerformance() {
   return (
     <div className="container my-4">
       <div className="row justify-content-center">
-        <div className="col-lg-8 col-md-6 col-sm-6 card mt-4 shadow">
+        <div className="col-lg-8 col-md-6 col-sm-6 card  shadow">
           <h4
             className="text-center text-uppercase mt-4 fw-bold"
             style={{ color: "#49266a" }}

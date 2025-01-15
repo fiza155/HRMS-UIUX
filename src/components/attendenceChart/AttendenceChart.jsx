@@ -43,7 +43,7 @@ const renderNeedle = (
 const GaugeChart = ({ value, label, colors, total = 100 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const cx = 160; // Center x-coordinate
+  const cx = 150; // Center x-coordinate
   const cy = 150; // Center y-coordinate
   const innerRadius = 70;
   const outerRadius = 120;
@@ -63,7 +63,7 @@ const GaugeChart = ({ value, label, colors, total = 100 }) => {
       onMouseLeave={handleMouseLeave}
     >
       <h4 className="chart-title">{label}</h4>
-      <PieChart width={320} height={180}>
+      <PieChart width={cx * 2} height={cy * 1.2}>
         <Pie
           dataKey="value"
           startAngle={180}
@@ -73,7 +73,7 @@ const GaugeChart = ({ value, label, colors, total = 100 }) => {
           cy={cy}
           innerRadius={innerRadius}
           outerRadius={outerRadius}
-          paddingAngle={5}
+          paddingAngle={2}
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={entry.color} />
@@ -88,7 +88,7 @@ const GaugeChart = ({ value, label, colors, total = 100 }) => {
 
 const AttendenceChart = () => {
   return (
-    <div className="attendence-chart-wrapper">
+    <div className="attendence-chart-wrapper ">
       <GaugeChart
         value={83.01}
         label="Attendance Rate"

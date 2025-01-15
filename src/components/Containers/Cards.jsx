@@ -9,7 +9,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const JobOverviewCard = () => {
   const data = {
-    labels: ["Active Jobs", "Finished Jobs"],
+    labels: ["Open Jobs", "Closed Jobs"],
     datasets: [
       {
         data: [60, 30],
@@ -50,14 +50,14 @@ const JobOverviewCard = () => {
             </div>
           </div>
         </Col>
-        <Col xs={5} md={5} className="text-start job-description">
+        <Col xs={5} md={5} className="text-start job-description ">
           <div>
             <small>
               <b style={{ color: "#007bff" }}>60</b> Active Jobs
             </small>
             <br />
             <small>
-              <b style={{ color: "#ffc107" }}>30</b> Finished Jobs
+              <b style={{ color: "#ffc107" }}>30</b> Closed Jobs
             </small>
             <br />
           </div>

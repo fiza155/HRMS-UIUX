@@ -1,21 +1,18 @@
-import React, { useState } from "react";
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  Dropdown,
-  DropdownDivider,
-} from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Navbar, Nav, Form, FormControl, Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
-import { FaMoon, FaSun } from "react-icons/fa"; // Icons for light/dark mode
+import { FaMoon, FaSun } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 
 const Header = () => {
   const [showSearchBox, setShowSearchBox] = useState(false); // Toggle search box visibility
+  const [isDarkMode, setIsDarkMode] = useState(false); // Track dark mode
   const navigate = useNavigate();
+  useEffect(() => {
+    document.body.setAttribute("data-bs-theme", isDarkMode ? "dark" : "light");
+  }, [isDarkMode]);
 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -37,28 +34,20 @@ const Header = () => {
     setShowSearchBox(!showSearchBox);
   };
 
-  // Toggle dark mode on body
+  // Toggle dark mode
   const toggleDarkMode = () => {
-    const currentTheme = document.body.getAttribute("data-bs-theme");
-    if (currentTheme === "dark") {
-      document.body.setAttribute("data-bs-theme", "light");
-    } else {
-      document.body.setAttribute("data-bs-theme", "dark");
-    }
+    setIsDarkMode(!isDarkMode);
   };
 
   return (
-    <div className="content-wrapper">
-      <Navbar expand="lg" className="px-3 border-bottom">
+    <div className="content-wrapper ">
+      <Navbar expand="lg">
         <div className="d-flex align-items-center w-100">
           {/* Search Bar */}
-          <Form className="d-flex flex-grow-1 me-lg-4">
-            <div
-              className={`input-group ${showSearchBox ? "expanded" : ""}`}
-              style={{ height: "2rem" }}
-            >
+          <Form className="d-flex flex-grow-1 ">
+            <div className={`input-group ${showSearchBox ? "expanded" : ""}`}>
               <span
-                className="input-group-text  border-0"
+                className="input-group-text border-1"
                 onClick={handleSearchToggle}
               >
                 <i
@@ -70,24 +59,28 @@ const Header = () => {
               <FormControl
                 type="search"
                 placeholder="Search..."
-                className="border-0 form-control-sm formControl"
+                className="border-1 form-control-sm formControl rounded-end-pill"
               />
             </div>
           </Form>
         </div>
 
         {/* Right Section */}
-        <Nav className="ms-auto align-items-center">
+        <Nav className="ms-auto align-items-center ">
           <Nav.Item className="me-3">
-            <i className="bi bi-fullscreen icon" onClick={toggleFullScreen}></i>
+            <i
+              className="bi bi-fullscreen  rounded-icon icon"
+              onClick={toggleFullScreen}
+            ></i>
           </Nav.Item>
-          <Nav.Item className="me-3">
-            <Button variant="link" onClick={toggleDarkMode}>
-              {document.body.getAttribute("data-bs-theme") === "dark" ? (
-                <FaSun />
-              ) : (
-                <FaMoon />
-              )}
+          <Nav.Item className="me-3  rounded-icon  icon">
+            <Button
+              variant="link"
+              onClick={toggleDarkMode}
+              className=" ms-2 "
+              style={{ color: isDarkMode ? "goldenrod" : "white" }}
+            >
+              {isDarkMode ? <FaSun /> : <FaMoon />}
             </Button>
           </Nav.Item>
         </Nav>
@@ -95,20 +88,15 @@ const Header = () => {
         <Dropdown align="end">
           <Dropdown.Toggle
             variant=""
-            className="d-flex align-items-center border-0 "
+            className="d-flex align-items-center border-0  p-2"
           >
-            <img
-              src="https://via.placeholder.com/40"
-              alt="Profile"
-              className="rounded-circle me-2 profile-img"
-            />
             <div>
               <div className="fw-bold user-details">HR Name</div>
-              <small className="user-details">Founder</small>
+              <small className="user-details ">Founder</small>
             </div>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <DropdownDivider />
+            {/* <DropdownDivider /> */}
             <Dropdown.Item href="#profile" className="dropdown-font shadow">
               Profile
             </Dropdown.Item>

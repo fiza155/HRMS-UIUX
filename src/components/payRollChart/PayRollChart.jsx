@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 import "./PayrollChart.css";
+import { Colors } from "chart.js";
 
 class PayRollChart extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class PayRollChart extends Component {
           type: "donut",
         },
         labels: [
+          // colors :undefined,
           "Frontend Developers",
           "Backend Developers",
           "SQA Engineers",

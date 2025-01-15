@@ -7,19 +7,11 @@ import EmpPerformanceChart from "../../components/employePerformance/EmpPerforma
 import AttendenceChart from "../../components/attendenceChart/AttendenceChart";
 
 const AdminDashboard = () => {
-  useEffect(() => {
-    document.body.setAttribute("data-bs-theme", "dark");
-
-    return () => {
-      document.body.setAttribute("data-bs-theme", "light");
-    };
-  }, []);
-
   return (
     <>
       <Cards />
-      <div className="dashboard-container">
-        <CompensationChart />
+      <div className="dashboard-container ">
+        <CompensationChart isAdmin={true} />
         <PayRollChart />
       </div>
       <div className="dashboard-container">

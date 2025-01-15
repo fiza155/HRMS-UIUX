@@ -4,7 +4,7 @@ import Header from "../header/Header";
 import "./DashboardLayout.css";
 import { Outlet } from "react-router-dom";
 
-const DashboardLayout = () => {
+const DashboardLayout = ({ role }) => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   const toggleSidebar = () => {
@@ -17,9 +17,17 @@ const DashboardLayout = () => {
         isSidebarCollapsed ? "sidebar-collapsed" : ""
       }`}
     >
-      <Sidebar isCollapsed={isSidebarCollapsed} toggleSidebar={toggleSidebar} />
+      {/* Conditionally render the sidebar based on the user's role */}
+      {role !== "Employee" && (
+        <Sidebar
+          isCollapsed={isSidebarCollapsed}
+          toggleSidebar={toggleSidebar}
+        />
+      )}
 
-      <div className="main-content">
+      <div
+        className={`main-content ${role === "Employee" ? "no-sidebar" : ""}`} // Adjust layout for Employee
+      >
         <Header />
         <div className="page-content">
           <Outlet />

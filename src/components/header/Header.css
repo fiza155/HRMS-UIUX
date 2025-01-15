@@ -2,17 +2,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 40px 15px;
+    padding: 40px 25px;
     height: 50px;
-    background-color: #ffffff;
+    background-color: #49266a;
+    color: white;
     border-bottom: 1px solid #dee2e6;
+    /* position: fixed;
+    z-index: 10;
+    width: 88rem;
+    max-width: 100%; */
+
 }
 
 .navbar {
     flex-grow: 1;
     display: flex;
     align-items: center;
-    padding: 0 15px;
+    padding: 0;
+    /* position: fixed; */
 }
 
 .navbar .btn {
@@ -27,31 +34,31 @@
     min-width: 200px;
 }
 
+.nav .dropdown-toggle {
+    background-color: white;
+}
 
 .icon {
-
     font-size: 1rem;
-    color: #5e6469;
-
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 
 .dropdown-font {
     font-size: 0.9rem;
-    color: #6c757d;
+    color: #ffffff;
     z-index: auto;
-
 }
 
 .user-details {
     font-size: 0.8rem;
-    color: #6c757d;
+    color: #f3f3f3;
 }
-
 
 .input-group {
     width: 20rem;
-
-    height: 2.5rem;
+    height: 2rem;
     margin-bottom: 5px;
 }
 
@@ -59,9 +66,9 @@
     height: 2.5rem;
 }
 
-.formControl {
+/* .formControl {
     background-color: #eae7ea;
-}
+} */
 
 @media (max-width: 768px) {
     .content-wrapper {

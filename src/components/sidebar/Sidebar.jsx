@@ -12,42 +12,57 @@ import {
   faFileUpload,
   faHistory,
   faMagnifyingGlassChart,
+  faBox,
+  faCalendarMinus,
 } from "@fortawesome/free-solid-svg-icons";
-import { faUserTie } from "@fortawesome/free-solid-svg-icons/faUserTie";
+import {
+  faUserTie,
+  faBuilding,
+  faChair,
+} from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.css";
-import { faBuilding } from "@fortawesome/free-solid-svg-icons/faBuilding";
-import { faChair } from "@fortawesome/free-solid-svg-icons/faChair";
+
+// Custom Hook for screen size
+function useIsLargeScreen() {
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 790);
+
+  useEffect(() => {
+    const handleResize = () => setIsLargeScreen(window.innerWidth > 790);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isLargeScreen;
+}
 
 function Sidebar() {
-  const [isExpanded, setIsExpanded] = useState(window.innerWidth > 790); // Default collapsed on mobile
-  const [isHovered, setIsHovered] = useState(false);
+  const isLargeScreen = useIsLargeScreen();
+  const [isExpanded, setIsExpanded] = useState(isLargeScreen);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const sidebarRef = useRef(null);
 
-  const handleMouseEnter = () => {
-    if (window.innerWidth > 790) setIsHovered(true); // Expand only on larger screens
+  const toggleSidebar = () => setIsExpanded(!isExpanded);
+
+  const toggleDropdown = (key) => {
+    setActiveDropdown(activeDropdown === key ? null : key);
   };
 
-  const handleMouseLeave = () => {
-    if (window.innerWidth > 790) setIsHovered(false); // Collapse only on larger screens
-  };
-
-  const toggleSidebar = () => {
-    setIsExpanded(!isExpanded);
+  const handleClickOutside = (e) => {
+    if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+      setActiveDropdown(null);
+    }
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 790) {
-        setIsExpanded(false); // Collapse on mobile
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    setIsExpanded(isLargeScreen); // Adjust sidebar based on screen size
+  }, [isLargeScreen]);
 
   const navItems = [
     {
@@ -66,11 +81,7 @@ function Sidebar() {
       path: "/admin/all-departments",
     },
     { key: "employs", label: "Employs", icon: faUsers },
-    {
-      key: "employsposition",
-      label: "Employs Position",
-      icon: faChair,
-    },
+    { key: "employsposition", label: "Employs Position", icon: faChair },
     {
       key: "employsperformance",
       label: "Employs Performance",
@@ -83,9 +94,15 @@ function Sidebar() {
     },
     { key: "jobPosting", label: "Job Posting", icon: faFileUpload },
     { key: "jobhistory", label: "Job History", icon: faHistory },
+    { key: "complaint", label: "Complaint", icon: faBox },
+    { key: "leave", label: "Leave", icon: faCalendarMinus },
   ];
 
   const dropdownOptions = {
+    dashboard: [
+      { label: "Admin dashboard", path: "/admin/dashboard" },
+      { label: "employ dashboard", path: "/employ-dashboard" },
+    ],
     hr: [
       { label: "All HRs", path: "/admin/all-hr" },
       { label: "Register HR", path: "/admin/hr-register" },
@@ -116,38 +133,27 @@ function Sidebar() {
       { label: "Add Performance", path: "/admin/add-performance" },
     ],
     attendance: [
-      { label: "Attendence", path: "/attendance" },
-      { label: "Attendence Form", path: "/post/attendance" },
+      { label: "Attendance", path: "/attendance" },
+      { label: "Attendance Form", path: "/post/attendance" },
+    ],
+    complaint: [
+      { label: "All Complaints", path: "/complainttable" },
+      { label: "Complaint Form", path: "/complaintform" },
+    ],
+    leave: [
+      { label: "All Leaves", path: "/allleaves" },
+      { label: "Leave Form", path: "/leaveform" },
     ],
   };
 
-  const toggleDropdown = (key) => {
-    setActiveDropdown(activeDropdown === key ? null : key);
-  };
-
-  const handleClickOutside = (e) => {
-    if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-      setActiveDropdown(null);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  const isSidebarOpen = isExpanded || isHovered;
+  const isSidebarOpen = isExpanded;
 
   return (
     <div
       ref={sidebarRef}
-      className={`sidebar rounded-end-5  ${
+      className={`sidebar  ${
         isSidebarOpen ? "sidebar-expanded" : "sidebar-collapsed"
       }`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       <div className="sidebar-header ">
         {isSidebarOpen && (
@@ -159,7 +165,7 @@ function Sidebar() {
             />
           </NavLink>
         )}
-        <button className="sidebar-toggle" onClick={toggleSidebar}>
+        <button className="sidebar-toggle rounded-icon" onClick={toggleSidebar}>
           <FontAwesomeIcon icon={faBars} />
         </button>
       </div>
@@ -182,11 +188,10 @@ function Sidebar() {
                     variant="link"
                     id={`dropdown-${item.key}`}
                     className="sidebar-link text-decoration-none px-0"
-                    onClick={() => toggleDropdown(item.key)}
                   >
                     <FontAwesomeIcon icon={item.icon} />
                     {isSidebarOpen && (
-                      <span className="px-3">{item.label}</span>
+                      <span className="ps-3">{item.label}</span>
                     )}
                   </Dropdown.Toggle>
                   <div className="dropdown-menu">

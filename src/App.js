@@ -8,7 +8,6 @@ import RegisterHR from "./pages/hr/RegisterHR";
 import Compensation from "./pages/compensation/Compensation";
 import AddCompensation from "./pages/compensation/AddCompensation";
 import AllHR from "./pages/hr/AllHR";
-import HRDashboard from "./pages/Dashboard/HRDashboard";
 
 import AllDepartments from "./pages/department/AllDepartments";
 import AllEmployeePerformance from "./pages/employeePerformance/AllEmployeePerformance";
@@ -25,6 +24,11 @@ import PostAJob from "./pages/jobPosting/PostAJob";
 import AllJobApplications from "./pages/alljobApplications/AllJobApplications";
 import Attendence from "./pages/Attendence/Attendence";
 import AttendenceForm from "./pages/Attendence/AttendenceForm";
+import ComplaintForm from "./pages/complaint/ComplaintForm";
+import ComplaintTable from "./pages/complaint/ComplaintTable";
+import LeaveForm from "./pages/leave/LeaveForm";
+import LeaveTable from "./pages/leave/LeaveTable";
+import EmployDashboard from "./pages/Dashboard/EmployDashboard";
 
 function App() {
   return (
@@ -32,13 +36,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-
+        <Route element={<DashboardLayout role="Employee" />}>
+          {/* Employ Dashboard */}
+          <Route path="/employ-dashboard" element={<EmployDashboard />} />
+          <Route path="/complaintform" element={<ComplaintForm />} />
+          <Route path="/leaveform" element={<LeaveForm />} />
+        </Route>
         {/* Pages with DashboardLayout */}
-        <Route element={<DashboardLayout />}>
+        <Route element={<DashboardLayout role="Admin" />}>
           {/* Admin Dashboard */}
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          {/* HR Dashboard */}
-          <Route path="/hr-dashboard" element={<HRDashboard />} />
+
           {/* HR Management */}
           <Route
             path="/admin/all-hr"
@@ -117,17 +125,7 @@ function App() {
             element={<AllDepartments />}
             requiredRole="admin"
           />
-          {/* Job History Management */}
-          <Route
-            path="/admin/add-job-history"
-            element={<AddJobHIstory />}
-            requiredRole="admin"
-          />
-          <Route
-            path="/admin/all-job-history"
-            element={<AllJobHistory />}
-            requiredRole="admin"
-          />
+
           {/*Employee Position Management */}
           <Route
             path="/positions"
@@ -144,6 +142,24 @@ function App() {
             element={<PositionDetails />}
             requiredRole="admin"
           />
+          {/* Job History Management */}
+          <Route
+            path="/admin/add-job-history"
+            element={<AddJobHIstory />}
+            requiredRole="admin"
+          />
+          <Route
+            path="/admin/all-job-history"
+            element={<AllJobHistory />}
+            requiredRole="admin"
+          />
+          {/* Complain */}
+          <Route path="/complaintform" element={<ComplaintForm />} />
+          <Route path="/complainttable" element={<ComplaintTable />} />
+
+          {/* Leave*/}
+          <Route path="/leaveform" element={<LeaveForm />} />
+          <Route path="/allleaves" element={<LeaveTable />} />
         </Route>
       </Routes>
     </>

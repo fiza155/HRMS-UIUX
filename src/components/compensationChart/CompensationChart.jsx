@@ -16,18 +16,18 @@ const employees = [
   {
     name: "John Doe",
     data: [
-      { name: "Jan", BasicSalary: 50000, Bonus: 10000 },
-      { name: "Feb", BasicSalary: 52000, Bonus: 12000 },
-      { name: "Mar", BasicSalary: 35000, Bonus: 15000 },
-      { name: "Apr", BasicSalary: 58000, Bonus: 13000 },
-      { name: "May", BasicSalary: 70000, Bonus: 14000 },
-      { name: "Jun", BasicSalary: 62000, Bonus: 11000 },
-      { name: "Jul", BasicSalary: 64000, Bonus: 12000 },
-      { name: "Aug", BasicSalary: 66000, Bonus: 10000 },
-      { name: "Sep", BasicSalary: 68000, Bonus: 15000 },
-      { name: "Oct", BasicSalary: 70000, Bonus: 14000 },
-      { name: "Nov", BasicSalary: 72000, Bonus: 16000 },
-      { name: "Dec", BasicSalary: 75000, Bonus: 17000 },
+      { name: "Jan", BasicSalary: 50000, Bonus: 70000 },
+      { name: "Feb", BasicSalary: 52000, Bonus: 72000 },
+      { name: "Mar", BasicSalary: 35000, Bonus: 65000 },
+      { name: "Apr", BasicSalary: 58000, Bonus: 63000 },
+      { name: "May", BasicSalary: 70000, Bonus: 74000 },
+      { name: "Jun", BasicSalary: 62000, Bonus: 51000 },
+      { name: "Jul", BasicSalary: 64000, Bonus: 82000 },
+      { name: "Aug", BasicSalary: 66000, Bonus: 70000 },
+      { name: "Sep", BasicSalary: 68000, Bonus: 68000 },
+      { name: "Oct", BasicSalary: 70000, Bonus: 74000 },
+      { name: "Nov", BasicSalary: 72000, Bonus: 86000 },
+      { name: "Dec", BasicSalary: 75000, Bonus: 95000 },
     ],
   },
   {
@@ -49,8 +49,14 @@ const employees = [
   },
 ];
 
-const CompensationChart = () => {
-  const [selectedEmployee, setSelectedEmployee] = useState(employees[0]);
+const CompensationChart = ({
+  isAdmin,
+  loggedInEmployee,
+  hideBasicSalary = false,
+}) => {
+  const [selectedEmployee, setSelectedEmployee] = useState(
+    isAdmin ? employees[0] : loggedInEmployee
+  );
 
   const handleEmployeeChange = (e) => {
     const employee = employees.find((emp) => emp.name === e.target.value);
@@ -61,21 +67,23 @@ const CompensationChart = () => {
     <div className="dashboard-chart-container ">
       <h2 className="chart-title">Employee Monthly Compensation</h2>
 
-      {/* Employee Selector */}
-      <div className="employee-selector">
-        <label htmlFor="employee">Select Employee: </label>
-        <select
-          id="employee"
-          onChange={handleEmployeeChange}
-          value={selectedEmployee.name}
-        >
-          {employees.map((employee) => (
-            <option key={employee.name} value={employee.name}>
-              {employee.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      {/* Show employee selector only if the user is an admin */}
+      {isAdmin && (
+        <div className="employee-selector">
+          <label htmlFor="employee">Select Employee: </label>
+          <select
+            id="employee"
+            onChange={handleEmployeeChange}
+            value={selectedEmployee.name}
+          >
+            {employees.map((employee) => (
+              <option key={employee.name} value={employee.name}>
+                {employee.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       {/* Bar Chart */}
       <ResponsiveContainer width="98%" height={300}>
@@ -108,12 +116,14 @@ const CompensationChart = () => {
           />
           <Tooltip />
           <Legend />
-          <Bar
-            dataKey="BasicSalary"
-            name="Basic Salary"
-            fill="#6c3483"
-            activeBar={<Rectangle fill="pink" stroke="blue" />}
-          />
+          {!hideBasicSalary && (
+            <Bar
+              dataKey="BasicSalary"
+              name="Basic Salary"
+              fill="#6c3483"
+              activeBar={<Rectangle fill="pink" stroke="blue" />}
+            />
+          )}
 
           <Bar
             dataKey="Bonus"

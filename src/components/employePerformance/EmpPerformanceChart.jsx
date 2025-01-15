@@ -25,7 +25,7 @@ const EmpPerformanceChart = () => {
       <p className="text-center">
         You have to pay <b style={{ color: "#00c853" }}>12548 USD</b>
       </p>
-      <ResponsiveContainer height={250}>
+      <ResponsiveContainer height={265}>
         <LineChart data={data}>
           <Line
             type="monotone"
@@ -42,7 +42,7 @@ const EmpPerformanceChart = () => {
             name="Target"
             strokeDasharray="5 5"
           />
-          <CartesianGrid stroke="#0000001d" />
+          <CartesianGrid stroke="#0000001f" />
           <XAxis dataKey="date" />
           <YAxis />
           <Tooltip />
