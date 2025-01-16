@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 import "./PayrollChart.css";
-import { Colors } from "chart.js";
 
 class PayRollChart extends Component {
   constructor(props) {
@@ -17,12 +16,14 @@ class PayRollChart extends Component {
             horizontal: 10,
             vertical: 5,
           },
+          labels: {
+            colors: undefined, // Dynamically updated
+          },
         },
         chart: {
           type: "donut",
         },
         labels: [
-          // colors :undefined,
           "Frontend Developers",
           "Backend Developers",
           "SQA Engineers",
@@ -40,6 +41,35 @@ class PayRollChart extends Component {
       series: [44, 55, 41, 17, 15], // Chart data
     };
   }
+
+  componentDidMount() {
+    this.updateTheme();
+    // Listen for theme changes
+    document.documentElement.addEventListener("themeChange", this.updateTheme);
+  }
+
+  componentWillUnmount() {
+    document.documentElement.removeEventListener(
+      "themeChange",
+      this.updateTheme
+    );
+  }
+
+  updateTheme = () => {
+    const isDarkMode =
+      document.documentElement.getAttribute("data-bs-theme") === "dark";
+    this.setState((prevState) => ({
+      options: {
+        ...prevState.options,
+        legend: {
+          ...prevState.options.legend,
+          labels: {
+            colors: isDarkMode ? "#ffffff" : "#777", // White for dark mode, black for light mode
+          },
+        },
+      },
+    }));
+  };
 
   render() {
     return (

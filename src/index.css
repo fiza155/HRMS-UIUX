@@ -134,12 +134,13 @@ body[data-bs-theme="dark"] .user-details,
 [data-bs-theme="dark"] .job-description,
 body[data-bs-theme="dark"] .form-box p,
 [data-bs-theme="dark"] .doughnut-overlay p {
-  color: #adb5bd;
+  color: #fefefe;
 }
 
 [data-bs-theme="dark"] .dashboard-card h3,
 [data-bs-theme="dark"] .card-title,
 body[data-bs-theme="dark"] .chart-title,
+body[data-bs-theme="dark"] legend.labels.colors,
 [data-bs-theme="dark"] .doughnut-overlay {
   color: #e0e0e0;
 }

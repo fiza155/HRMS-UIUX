@@ -26,7 +26,7 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
-    navigate("/");
+    navigate("/signin");
   };
 
   // Toggle search box visibility on mobile
@@ -92,10 +92,9 @@ const Header = () => {
           >
             <div>
               <div className="fw-bold user-details">HR Name</div>
-              <small className="user-details ">Founder</small>
             </div>
           </Dropdown.Toggle>
-          <Dropdown.Menu>
+          <Dropdown.Menu className="p-0">
             {/* <DropdownDivider /> */}
             <Dropdown.Item href="#profile" className="dropdown-font shadow">
               Profile

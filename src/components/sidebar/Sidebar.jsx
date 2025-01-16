@@ -194,7 +194,7 @@ function Sidebar() {
                       <span className="ps-3">{item.label}</span>
                     )}
                   </Dropdown.Toggle>
-                  <div className="dropdown-menu">
+                  <div className="dropdown-menu p-0 ms-4">
                     {dropdownOptions[item.key].map((option) => (
                       <Dropdown.Item
                         as={Link}
