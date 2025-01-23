@@ -33,6 +33,12 @@ body {
   transform: scale(1.1);
 }
 
+/* 
+.container-hover {
+  transform: translateY(-7px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+} */
+
 /* Employ Dashboard CSS */
 .form-box {
   flex: 1;
@@ -133,6 +139,7 @@ body[data-bs-theme="dark"] .user-details,
 [data-bs-theme="dark"] .card-description,
 [data-bs-theme="dark"] .job-description,
 body[data-bs-theme="dark"] .form-box p,
+body[data-bs-theme="dark"] .recharts-surface,
 [data-bs-theme="dark"] .doughnut-overlay p {
   color: #fefefe;
 }
@@ -161,5 +168,9 @@ body[data-bs-theme="dark"] .employee-selector select:focus {
 }
 
 body[data-bs-theme="dark"] .icon:hover {
+  background-color: #3a3a3a;
+}
+
+body[data-bs-theme="dark"] .card-container:hover {
   background-color: #3a3a3a;
 }

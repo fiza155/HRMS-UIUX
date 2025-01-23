@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PieChart, Pie, Cell } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import "./AttendenceChart.css";
 
 const RADIAN = Math.PI / 180;
@@ -58,11 +58,14 @@ const GaugeChart = ({ value, label, colors, total = 100 }) => {
 
   return (
     <div
-      className={`chart-container ${isHovered ? "hovered" : ""}`}
+      className={`chart-container hover-container ${
+        isHovered ? "hovered" : ""
+      }`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <h4 className="chart-title">{label}</h4>
+      {/* <ResponsiveContainer> */}
       <PieChart width={cx * 2} height={cy * 1.2}>
         <Pie
           dataKey="value"
@@ -73,7 +76,7 @@ const GaugeChart = ({ value, label, colors, total = 100 }) => {
           cy={cy}
           innerRadius={innerRadius}
           outerRadius={outerRadius}
-          paddingAngle={2}
+          paddingAngle={1}
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={entry.color} />
@@ -81,6 +84,7 @@ const GaugeChart = ({ value, label, colors, total = 100 }) => {
         </Pie>
         {renderNeedle(value, total, cx, cy, innerRadius, outerRadius, "#333")}
       </PieChart>
+      {/* </ResponsiveContainer> */}
       <h3>{value.toFixed(2)}%</h3>
     </div>
   );
@@ -88,17 +92,21 @@ const GaugeChart = ({ value, label, colors, total = 100 }) => {
 
 const AttendenceChart = () => {
   return (
-    <div className="attendence-chart-wrapper ">
-      <GaugeChart
-        value={83.01}
-        label="Attendance Rate"
-        colors={["#6A5ACD", "#E6E6E6"]}
-      />
-      <GaugeChart
-        value={36.99}
-        label="Leave Rate"
-        colors={["#E91E63", "#E6E6E6"]}
-      />
+    <div>
+      <ResponsiveContainer>
+        <div className="attendence-chart-wrapper  ">
+          <GaugeChart
+            value={83.01}
+            label="Attendance Rate"
+            colors={["#6A5ACD", "#E6E6E6"]}
+          />
+          <GaugeChart
+            value={36.99}
+            label="Leave Rate"
+            colors={["#E91E63", "#E6E6E6"]}
+          />
+        </div>
+      </ResponsiveContainer>
     </div>
   );
 };

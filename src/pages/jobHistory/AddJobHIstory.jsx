@@ -36,6 +36,7 @@ const AddJobHistory = () => {
     joiningDate: "",
   });
 
+  const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
@@ -54,6 +55,30 @@ const AddJobHistory = () => {
     }
   };
 
+  const validate = () => {
+    const newErrors = {};
+    const today = new Date().toISOString().split("T")[0];
+
+    if (!formData.employee) newErrors.employee = "Please select an employee.";
+    if (!formData.department)
+      newErrors.department = "Please select a department.";
+    if (!formData.position) newErrors.position = "Please select a position.";
+    if (
+      !formData.status ||
+      (formData.status !== "Active" && formData.status !== "Inactive")
+    ) {
+      newErrors.status = "Status must be 'Active' or 'Inactive'.";
+    }
+    if (!formData.joiningDate) {
+      newErrors.joiningDate = "Please select a joining date.";
+    } else if (formData.joiningDate > today) {
+      newErrors.joiningDate = "Joining date cannot be in the future.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleClear = () => {
     setFormData({
       employee: "",
@@ -62,25 +87,20 @@ const AddJobHistory = () => {
       status: "",
       joiningDate: "",
     });
+    setErrors({});
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const { employee, department, position, status, joiningDate } = formData;
-    if (!employee || !department || !position || !status || !joiningDate) {
-      setSuccessMessage("All fields are required.");
-      return;
-    }
+    if (!validate()) return;
 
     console.log("Job History Data:", formData);
-
     setSuccessMessage("Job History added successfully!");
     handleClear();
 
     setTimeout(() => {
       setSuccessMessage("");
-    }, 6000);
+    }, 3000);
   };
 
   return (
@@ -111,6 +131,9 @@ const AddJobHistory = () => {
                 </option>
               ))}
             </select>
+            {errors.employee && (
+              <small className="text-danger">{errors.employee}</small>
+            )}
           </div>
 
           <div className="mb-3">
@@ -131,6 +154,9 @@ const AddJobHistory = () => {
                 </option>
               ))}
             </select>
+            {errors.department && (
+              <small className="text-danger">{errors.department}</small>
+            )}
           </div>
 
           <div className="mb-3">
@@ -151,6 +177,9 @@ const AddJobHistory = () => {
                 </option>
               ))}
             </select>
+            {errors.position && (
+              <small className="text-danger">{errors.position}</small>
+            )}
           </div>
 
           <div className="mb-3">
@@ -166,6 +195,9 @@ const AddJobHistory = () => {
               onChange={handleChange}
               placeholder="Enter status"
             />
+            {errors.status && (
+              <small className="text-danger">{errors.status}</small>
+            )}
           </div>
 
           <div className="mb-3">
@@ -180,6 +212,9 @@ const AddJobHistory = () => {
               value={formData.joiningDate}
               onChange={handleChange}
             />
+            {errors.joiningDate && (
+              <small className="text-danger">{errors.joiningDate}</small>
+            )}
           </div>
 
           <div className="d-flex justify-content-between">

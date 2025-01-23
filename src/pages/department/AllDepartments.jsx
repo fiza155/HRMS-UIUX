@@ -97,7 +97,7 @@ export default function DepartmentList() {
             className="card-title text-center my-3 fw-bold text-uppercase"
             style={{ color: "#49266a" }}
           >
-            All Departments List
+            All Departments
           </h4>
 
           {/* Add Department Button */}

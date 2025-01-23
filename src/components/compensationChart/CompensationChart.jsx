@@ -64,7 +64,7 @@ const CompensationChart = ({
   };
 
   return (
-    <div className="dashboard-chart-container ">
+    <div className="dashboard-chart-container hover-container">
       <h2 className="chart-title">Employee Monthly Compensation</h2>
 
       {/* Show employee selector only if the user is an admin */}

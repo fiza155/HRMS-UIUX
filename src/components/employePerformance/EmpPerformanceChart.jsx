@@ -20,7 +20,7 @@ const data = [
 
 const EmpPerformanceChart = () => {
   return (
-    <div className="performance-chart">
+    <div className="performance-chart hover-container">
       <h3 className="chart-title">Performance Review</h3>
       <p className="text-center">
         You have to pay <b style={{ color: "#00c853" }}>12548 USD</b>

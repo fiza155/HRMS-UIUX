@@ -2,11 +2,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 40px 25px;
+    padding: 30px 25px;
     height: 50px;
     background-color: #49266a;
     color: white;
     border-bottom: 1px solid #dee2e6;
+    width: 100%;
     /* position: fixed;
     z-index: 10;
     width: 88rem;
@@ -18,8 +19,8 @@
     flex-grow: 1;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0;
-    /* position: fixed; */
 }
 
 .navbar .btn {
@@ -66,12 +67,46 @@
     height: 2.5rem;
 }
 
-/* .formControl {
-    background-color: #eae7ea;
-} */
+@media (min-width: 768px) and (max-width: 991px) {
+    /* .content-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 25px;
+        height: 50px;
+        background-color: black;
+        color: white;
+        border-bottom: 1px solid #dee2e6;
+        width: 100%;
+    } */
+
+    /* .nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    } */
+
+    /* .nav .nav-item {
+        margin: 0;
+    } */
+
+    /* .icon {
+        display: flex;
+        margin: 0 5px;
+    } */
+
+    /* .btn {
+        display: inline-block;
+    } */
+
+}
+
 
 @media (max-width: 768px) {
     .content-wrapper {
+        display: flex;
         flex-direction: row;
         justify-content: flex-end;
     }

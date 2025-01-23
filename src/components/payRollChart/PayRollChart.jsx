@@ -73,7 +73,7 @@ class PayRollChart extends Component {
 
   render() {
     return (
-      <div className="Payroll-container">
+      <div className="Payroll-container hover-container">
         <h2 className="chart-title">Payroll Details</h2>
         <Chart
           options={this.state.options}

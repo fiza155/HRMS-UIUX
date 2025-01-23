@@ -24,10 +24,10 @@ import "./Sidebar.css";
 
 // Custom Hook for screen size
 function useIsLargeScreen() {
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 790);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1045);
 
   useEffect(() => {
-    const handleResize = () => setIsLargeScreen(window.innerWidth > 790);
+    const handleResize = () => setIsLargeScreen(window.innerWidth > 1045);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -69,7 +69,7 @@ function Sidebar() {
       key: "dashboard",
       label: "Dashboard",
       icon: faDashboard,
-      path: "/admin-dashboard",
+      // path: "/admin-dashboard",
     },
     { key: "hr", label: "HR", icon: faUserTie },
     { key: "attendance", label: "Attendance", icon: faCalendarAlt },
@@ -100,7 +100,7 @@ function Sidebar() {
 
   const dropdownOptions = {
     dashboard: [
-      { label: "Admin dashboard", path: "/admin/dashboard" },
+      { label: "Admin dashboard", path: "/admin-dashboard" },
       { label: "employ dashboard", path: "/employ-dashboard" },
     ],
     hr: [

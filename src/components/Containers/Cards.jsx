@@ -36,7 +36,7 @@ const JobOverviewCard = () => {
   };
 
   return (
-    <Card className={`text-center shadow py-2 card-container`}>
+    <Card className={`text-center shadow py-2 card-container hover-container`}>
       <Row className="gx-2 align-items-center px-2">
         <Col xs={7} md={7}>
           <h6 className="text-center fw-bold pt-lg-2 card-title">
@@ -70,9 +70,9 @@ const JobOverviewCard = () => {
 const Cards = () => {
   return (
     <Container fluid className="py-2">
-      <Row className="gy-2 gx-2">
+      <Row className="gy-2 gx-2 ">
         <Col xs={12} sm={6} md={3}>
-          <Card className="text-center px-3 py-3 shadow card-container">
+          <Card className="text-center px-3 py-3 shadow card-container hover-container">
             <h6 className="fw-bold card-title">Active Employees</h6>
             <h2 className="my-2 fw-bold card-value">
               <CountUp end={200} duration={2} />
@@ -83,7 +83,7 @@ const Cards = () => {
           </Card>
         </Col>
         <Col xs={12} sm={6} md={3}>
-          <Card className="text-center px-3 py-3 shadow card-container">
+          <Card className="text-center px-3 py-3 shadow card-container  hover-container">
             <h6 className="fw-bold card-title">Performance Analytics</h6>
             <h2 className="my-2 fw-bold card-value">
               <CountUp end={4.1} duration={2} decimals={1} />
@@ -94,7 +94,7 @@ const Cards = () => {
           </Card>
         </Col>
         <Col xs={12} sm={6} md={3}>
-          <Card className="text-center px-3 py-3 shadow card-container">
+          <Card className="text-center px-3 py-3 shadow card-container hover-container">
             <h6 className="fw-bold card-title">Overall Payroll Details</h6>
             <h2 className="my-2 fw-bold card-value">
               <CountUp end={20} duration={2} suffix="M" />

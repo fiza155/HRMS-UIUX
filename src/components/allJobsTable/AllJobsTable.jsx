@@ -69,7 +69,7 @@ const AllJobsTable = () => {
   };
 
   return (
-    <div className="jobtable-container container">
+    <div className="jobtable-container container hover-container">
       <h2 className="chart-title text-center mb-3">Jobs Application Section</h2>
 
       <div className="table-container rounded-4 ">

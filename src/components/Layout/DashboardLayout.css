@@ -58,14 +58,20 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.dashboard-container>.dashboard-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
 
 .dashboard-card p {
     font-size: 14px;
     color: #666666;
+}
+
+.hover-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    /* background-color: #eaeaf1; */
 }
 
 @media screen and (max-width: 768px) {

@@ -17,7 +17,7 @@ const EmployDashboard = () => {
       <div className="gap-4 mx-2 d-flex justify-content-between mb-3">
         {/* Leave Form */}
         <div
-          className="form-box"
+          className="form-box hover-container"
           onClick={() => handleNavigation("/leaveform")}
         >
           <h3>Leave Form</h3>
@@ -26,7 +26,7 @@ const EmployDashboard = () => {
 
         {/* Complaint Form Box */}
         <div
-          className="form-box"
+          className="form-box hover-container"
           onClick={() => handleNavigation("/complaintform")}
         >
           <h3>Complaint Form</h3>

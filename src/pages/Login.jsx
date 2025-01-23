@@ -80,7 +80,7 @@ const Login = () => {
                     <input
                       type="email"
                       id="emailaddress"
-                      className="form-control form-control-sm"
+                      className="form-control form-control-sm py-2"
                       placeholder="Enter your email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -165,7 +165,7 @@ const Login = () => {
                   </div>
                 </form>
 
-                <div className="text-center mt-3">
+                {/* <div className="text-center mt-3">
                   <p className="text-muted" style={{ fontSize: "0.875rem" }}>
                     or Sign In with
                   </p>
@@ -178,7 +178,7 @@ const Login = () => {
                   <button className="btn btn-outline-dark me-2 btn-sm">
                     <i className="fab fa-github"></i>
                   </button>
-                </div>
+                </div> */}
 
                 <div className="text-center mt-4">
                   <p className="mb-0" style={{ fontSize: "0.875rem" }}>

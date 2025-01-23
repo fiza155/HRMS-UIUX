@@ -40,11 +40,11 @@ const Header = () => {
   };
 
   return (
-    <div className="content-wrapper ">
+    <div className="d-flex content-wrapper">
       <Navbar expand="lg">
-        <div className="d-flex align-items-center w-100">
+        <div className="d-flex ">
           {/* Search Bar */}
-          <Form className="d-flex flex-grow-1 ">
+          <Form className="d-flex ">
             <div className={`input-group ${showSearchBox ? "expanded" : ""}`}>
               <span
                 className="input-group-text border-1"
@@ -66,14 +66,14 @@ const Header = () => {
         </div>
 
         {/* Right Section */}
-        <Nav className="ms-auto align-items-center ">
-          <Nav.Item className="me-3">
+        <div className="d-flex flex-row ms-auto align-items-center ">
+          <Nav.Item className="me-2">
             <i
               className="bi bi-fullscreen  rounded-icon icon"
               onClick={toggleFullScreen}
             ></i>
           </Nav.Item>
-          <Nav.Item className="me-3  rounded-icon  icon">
+          <Nav.Item className="me-2  rounded-icon  icon">
             <Button
               variant="link"
               onClick={toggleDarkMode}
@@ -83,7 +83,7 @@ const Header = () => {
               {isDarkMode ? <FaSun /> : <FaMoon />}
             </Button>
           </Nav.Item>
-        </Nav>
+        </div>
 
         <Dropdown align="end">
           <Dropdown.Toggle
@@ -95,10 +95,9 @@ const Header = () => {
             </div>
           </Dropdown.Toggle>
           <Dropdown.Menu className="p-0">
-            {/* <DropdownDivider /> */}
-            <Dropdown.Item href="#profile" className="dropdown-font shadow">
+            {/* <Dropdown.Item href="#profile" className="dropdown-font shadow">
               Profile
-            </Dropdown.Item>
+            </Dropdown.Item> */}
             <Dropdown.Item onClick={handleLogout} className="dropdown-font">
               Logout
             </Dropdown.Item>

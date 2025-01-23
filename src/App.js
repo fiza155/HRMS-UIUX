@@ -35,6 +35,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route element={<DashboardLayout role="Employee" />}>
           {/* Employ Dashboard */}
@@ -113,13 +114,6 @@ function App() {
             element={<Attendence />}
             requiredRole="admin"
           />
-
-          {/* Department Management */}
-          {/* <Route
-            path="/admin/departments"
-            element={<AddDepartments />}
-            requiredRole="admin"
-          /> */}
           <Route
             path="/admin/all-departments"
             element={<AllDepartments />}

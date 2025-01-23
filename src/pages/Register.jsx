@@ -101,7 +101,7 @@ const Register = () => {
                         Full Name <span className="text-danger">*</span>
                       </label>
                       <input
-                        className="form-control form-control-sm"
+                        className="form-control form-control-sm py-2"
                         type="text"
                         id="username"
                         value={formData.username}
@@ -123,7 +123,7 @@ const Register = () => {
                         Email address <span className="text-danger">*</span>
                       </label>
                       <input
-                        className="form-control form-control-sm"
+                        className="form-control form-control-sm py-2"
                         type="email"
                         id="emailaddress"
                         value={formData.emailaddress}
@@ -199,7 +199,7 @@ const Register = () => {
                     </NavLink>
                   </form>
 
-                  <div className="text-center mt-3">
+                  {/* <div className="text-center mt-3">
                     <p className="text-muted" style={{ fontSize: "0.875rem" }}>
                       or Sign In with
                     </p>
@@ -212,7 +212,7 @@ const Register = () => {
                     <button className="btn btn-outline-dark me-2 btn-sm">
                       <i className="fab fa-github"></i>
                     </button>
-                  </div>
+                  </div> */}
 
                   <div className="text-center mt-4">
                     <p className="text-muted" style={{ fontSize: "0.875rem" }}>
