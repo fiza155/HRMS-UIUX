@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Border } from "react-bootstrap-icons";
 import { Link, NavLink } from "react-router-dom";
 
 const Login = () => {
@@ -39,10 +40,13 @@ const Login = () => {
 
   return (
     <div className="authentication-bg d-flex vh-100">
-      <div className="container my-5">
+      <div className="container my-auto">
         <div className="row justify-content-center">
-          <div className="col-lg-4 col-md-6 col-sm-8">
-            <div className="card shadow-sm border-0">
+          <div className="col-lg-4 col-md-6 col-sm-6">
+            <div
+              className="card shadow-sm border-0"
+              style={{ borderRadius: "50px" }}
+            >
               <div className="card-body p-4">
                 <div className="account-box text-center">
                   <div className="account-logo-box">
@@ -136,7 +140,7 @@ const Login = () => {
                   </div>
 
                   <div
-                    className="mb-3 form-check"
+                    className="mb-2 form-check"
                     style={{ fontSize: "0.875rem" }}
                   >
                     <input
@@ -180,7 +184,7 @@ const Login = () => {
                   </button>
                 </div> */}
 
-                <div className="text-center mt-4">
+                <div className="text-center mt-2">
                   <p className="mb-0" style={{ fontSize: "0.875rem" }}>
                     Don't have an account?
                     <Link to="/signup" className="text-decoration-none">

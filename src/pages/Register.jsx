@@ -64,14 +64,17 @@ const Register = () => {
   };
 
   return (
-    <div className="authentication-bg d-flex vh-100">
+    <div className="authentication-bg d-flex ">
       <div className="container my-5">
         <div className="row justify-content-center">
-          <div className="col-lg-4 col-md-6 col-sm-8">
-            <div className="card shadow-sm border-0 mb-4">
+          <div className="col-lg-4 col-md-6 col-sm-6">
+            <div
+              className="card shadow-sm border-0"
+              style={{ borderRadius: "50px" }}
+            >
               <div className="card-body p-4">
                 <div className="account-box">
-                  <div className="account-logo-box text-center">
+                  <div className="account-logo-box text-center pt-2">
                     <a href="">
                       <img
                         src="/assets/HRMS logo/Dark_logo.png"
@@ -172,7 +175,7 @@ const Register = () => {
                     </div>
 
                     <div
-                      className="form-check mb-3"
+                      className="form-check mb-2"
                       style={{ fontSize: "0.875rem" }}
                     >
                       <input
@@ -214,8 +217,11 @@ const Register = () => {
                     </button>
                   </div> */}
 
-                  <div className="text-center mt-4">
-                    <p className="text-muted" style={{ fontSize: "0.875rem" }}>
+                  <div className="text-center mt-2">
+                    <p
+                      className="text-muted mb-0"
+                      style={{ fontSize: "0.875rem" }}
+                    >
                       Already have an account?
                       <Link to="/" className="text-decoration-none ms-1">
                         <b>Sign In</b>

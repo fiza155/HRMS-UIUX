@@ -12,8 +12,8 @@ body {
 }
 
 .authentication-bg {
-  min-height: 100px;
-  background-color: #f8f9fa;
+  max-height: auto;
+  background: linear-gradient(to bottom, #4a266a 20%, #f0e0f5 50%);
   background-size: cover;
   background-repeat: no-repeat;
 }
