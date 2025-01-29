@@ -38,10 +38,8 @@ const JobOverviewCard = () => {
   return (
     <Card className={`text-center shadow py-2 card-container hover-container`}>
       <Row className="gx-2 align-items-center px-2">
+        <h6 className="text-center fw-bold pt-lg-2 card-title">Job Overview</h6>
         <Col xs={7} md={7}>
-          <h6 className="text-center fw-bold pt-lg-2 card-title">
-            Job Overview
-          </h6>
           <div className="doughnut-wrapper">
             <Doughnut data={data} options={options} />
             <div className="doughnut-overlay">

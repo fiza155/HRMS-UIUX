@@ -109,10 +109,7 @@ const AllEmployeePerformance = () => {
     <div className="container my-4">
       <div className="card shadow">
         <div className="card-body">
-          <h4
-            className="card-title text-center mb-3 fw-bold"
-            style={{ color: "#49266a" }}
-          >
+          <h4 className="card-title text-center mb-3 fw-bold">
             Employee Performance
           </h4>
           <div className="table-responsive">

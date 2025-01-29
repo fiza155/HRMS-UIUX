@@ -55,16 +55,11 @@ const Login = () => {
                         src="/assets/HRMS logo/Dark_logo.png"
                         alt="logo"
                         height="100"
-                        width="200"
+                        width="170"
                       />
                     </a>
                   </div>
-                  <h6
-                    className="text-uppercase mb-1 mt-3 "
-                    style={{ color: "#49266a" }}
-                  >
-                    Welcome Back!
-                  </h6>
+                  <h6 className="text-uppercase mb-1 mt-3 ">Welcome Back!</h6>
                   <p
                     className="text-muted mb-4"
                     style={{ fontSize: "0.875rem" }}
@@ -85,7 +80,7 @@ const Login = () => {
                       type="email"
                       id="emailaddress"
                       className="form-control form-control-sm py-2"
-                      placeholder="Enter your email"
+                      placeholder="Enter your Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -103,20 +98,21 @@ const Login = () => {
                     >
                       Password <span style={{ color: "red" }}>*</span>
                     </label>
-                    <div className="input-group w-100">
+                    <div className="position-relative w-100">
                       <input
                         type={passwordVisible ? "text" : "password"}
                         id="password"
-                        className="form-control form-control-sm "
-                        placeholder="Enter your password"
+                        className="form-control form-control-sm pe-5 py-2"
+                        placeholder="Enter your Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />
                       <button
                         type="button"
-                        className="btn btn-light btn-sm"
+                        className="btn position-absolute top-50 end-0 translate-middle-y pe-3"
                         onClick={togglePasswordVisibility}
+                        style={{ border: "none", background: "transparent" }}
                       >
                         {passwordVisible ? (
                           <i className="far fa-eye-slash"></i>
@@ -160,10 +156,10 @@ const Login = () => {
                     >
                       <button
                         type="submit"
-                        className="btn w-100 text-white btn-sm"
+                        className="btn w-100 text-white btn-sm py-2"
                         style={{ backgroundColor: "#49266a" }}
                       >
-                        Sign In
+                        Login
                       </button>
                     </NavLink>
                   </div>

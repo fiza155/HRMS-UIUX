@@ -93,10 +93,7 @@ export default function DepartmentList() {
 
       <div className="card shadow">
         <div className="card-body">
-          <h4
-            className="card-title text-center my-3 fw-bold text-uppercase"
-            style={{ color: "#49266a" }}
-          >
+          <h4 className="card-title text-center my-3 fw-bold text-uppercase">
             All Departments
           </h4>
 

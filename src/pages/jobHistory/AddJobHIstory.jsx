@@ -108,7 +108,7 @@ const AddJobHistory = () => {
       <div className="col-lg-8 col-md-10 col-sm-10 card shadow-lg p-3">
         <h4
           className="text-center text-uppercase fw-bold"
-          style={{ color: "#49266a" }}
+          // style={{ color: "#49266a" }}
         >
           Add Job History
         </h4>

@@ -55,10 +55,7 @@ const RegisterHR = () => {
         <div className="col-lg-8 col-md-6 col-sm-8 mt-2 ">
           <div className="card shadow border ">
             <div className="card-body py-5 shadow">
-              <h3
-                className="text-center text-uppercase fw-bold "
-                style={{ color: "#49266a" }}
-              >
+              <h3 className="text-center text-uppercase fw-bold ">
                 Register HR
               </h3>
 

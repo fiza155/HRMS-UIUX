@@ -50,12 +50,7 @@ export default function AllHR() {
   return (
     <div className="container mt-4">
       <div className="card card-body shadow">
-        <h4
-          className="card-title mb-3 text-center fw-bold"
-          style={{ color: "#49266a" }}
-        >
-          All HR Details
-        </h4>
+        <h4 className="card-title mb-3 text-center fw-bold">All HR Details</h4>
 
         {allHRS.length === 0 ? (
           <div className="alert alert-warning">No HR records found.</div>

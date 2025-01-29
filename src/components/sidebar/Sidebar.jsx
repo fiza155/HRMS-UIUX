@@ -14,6 +14,7 @@ import {
   faMagnifyingGlassChart,
   faBox,
   faCalendarMinus,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faUserTie,
@@ -80,11 +81,11 @@ function Sidebar() {
       icon: faBuilding,
       path: "/admin/all-departments",
     },
-    { key: "employs", label: "Employs", icon: faUsers },
-    { key: "employsposition", label: "Employs Position", icon: faChair },
+    { key: "employees", label: "Employees", icon: faUser },
+    { key: "employsposition", label: "Employees Position", icon: faChair },
     {
       key: "employsperformance",
-      label: "Employs Performance",
+      label: "Employees Performance",
       icon: faChartSimple,
     },
     {
@@ -107,7 +108,7 @@ function Sidebar() {
       { label: "All HRs", path: "/admin/all-hr" },
       { label: "Register HR", path: "/admin/hr-register" },
     ],
-    employs: [
+    employees: [
       { label: "All Employees", path: "/employees" },
       { label: "Add an Employee", path: "/register/employee" },
     ],

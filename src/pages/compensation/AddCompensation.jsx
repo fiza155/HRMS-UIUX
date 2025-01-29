@@ -45,10 +45,7 @@ const AddCompensation = () => {
   return (
     <div className="d-flex container mt-5 justify-content-center align-items-center">
       <div className="col-lg-10 col-md-10 col-sm-8 card shadow-lg p-4 pb-5">
-        <h4
-          className="text-center text-uppercase fw-bold "
-          style={{ color: "#49266a" }}
-        >
+        <h4 className="text-center text-uppercase fw-bold ">
           Add Compensation
         </h4>
         <form onSubmit={handleSubmit}>

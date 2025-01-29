@@ -64,7 +64,7 @@ class PayRollChart extends Component {
         legend: {
           ...prevState.options.legend,
           labels: {
-            colors: isDarkMode ? "#ffffff" : "#777", // White for dark mode, black for light mode
+            colors: isDarkMode ? "#ffffff" : "#", // White for dark mode, black for light mode
           },
         },
       },

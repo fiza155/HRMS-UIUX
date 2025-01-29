@@ -98,10 +98,7 @@ const Compensation = () => {
       ) : (
         <div className="card shadow ">
           <div className="card-body ">
-            <h4
-              className="card-title text-center mb-3 fw-bold text-uppercase"
-              style={{ color: "#49266a" }}
-            >
+            <h4 className="card-title text-center mb-3 fw-bold text-uppercase">
               Employee Compensation
             </h4>
             <div className="table-responsive">

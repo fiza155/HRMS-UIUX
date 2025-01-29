@@ -80,15 +80,10 @@ const Register = () => {
                         src="/assets/HRMS logo/Dark_logo.png"
                         alt="logo"
                         height="100"
-                        width="200"
+                        width="170"
                       />
                     </a>
-                    <h5
-                      className="text-uppercase mb-1 mt-3"
-                      style={{ color: "#49266a" }}
-                    >
-                      Register
-                    </h5>
+                    <h5 className="text-uppercase mb-1 mt-3">Register</h5>
                     <p style={{ fontSize: "0.875rem" }}>
                       Get access to your account
                     </p>
@@ -147,9 +142,9 @@ const Register = () => {
                       >
                         Password <span className="text-danger">*</span>
                       </label>
-                      <div className="input-group w-100">
+                      <div className="position-relative w-100">
                         <input
-                          className="form-control form-control-sm"
+                          className="form-control form-control-sm pe-5 py-2"
                           type={passwordVisible ? "text" : "password"}
                           id="password"
                           value={formData.password}
@@ -159,8 +154,9 @@ const Register = () => {
                         />
                         <button
                           type="button"
-                          className="btn btn-light btn-sm"
+                          className="btn position-absolute top-50 end-0 translate-middle-y pe-3"
                           onClick={togglePasswordVisibility}
+                          style={{ border: "none", background: "transparent" }}
                         >
                           {passwordVisible ? (
                             <i className="far fa-eye-slash"></i>
@@ -190,7 +186,7 @@ const Register = () => {
                     </div>
                     <NavLink to="/">
                       <button
-                        className="btn w-100 text-white btn-sm"
+                        className="btn w-100 text-white btn-sm py-2"
                         style={{
                           backgroundColor: "#49266a",
                           cursor: "pointer",
